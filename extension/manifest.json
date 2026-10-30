@@ -10,22 +10,22 @@
   ],
   "host_permissions": [
     "https://generativelanguage.googleapis.com/*",
-    "https://news.google.com/*"
+    "https://news.google.com/*",
+    "http://localhost:8787/*",
+    "https://*.onrender.com/*"
   ],
   "action": {
     "default_popup": "popup.html",
     "default_title": "Check this story",
     "default_icon": {
-      "16": "icons/icon16.png",
-      "32": "icons/icon32.png",
-      "48": "icons/icon48.png",
-      "128": "icons/icon128.png"
+      "16": "icons/16.png",
+      "48": "icons/48.png",
+      "128": "icons/128.png"
     }
   },
   "icons": {
-    "16": "icons/icon16.png",
-    "32": "icons/icon32.png",
-    "48": "icons/icon48.png",
-    "128": "icons/icon128.png"
+    "16": "icons/16.png",
+    "48": "icons/48.png",
+    "128": "icons/128.png"
   }
 }

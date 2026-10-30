@@ -13,7 +13,7 @@ async function ask(key, prompt) {
         body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
       });
     } catch (e) {  // Gemma's API sometimes drops the connection; retry like a 500
-      await new Promise(res => setTimeout(res, 3000 * (n + 1)));
+      await new Promise(res => setTimeout(res, 2000 * (n + 1)));
       continue;
     }
     if (r.ok) {
@@ -22,7 +22,7 @@ async function ask(key, prompt) {
       return parts[parts.length - 1].text;
     }
     if (r.status === 400 || r.status === 403) throw new Error(`Gemma ${r.status}: check the API key`);
-    await new Promise(res => setTimeout(res, 3000 * (n + 1)));
+    await new Promise(res => setTimeout(res, 2000 * (n + 1)));
   }
   throw new Error("Gemma did not answer");
 }
@@ -60,6 +60,17 @@ async function corroborate(query, pageHost) {
   return [...seen.values()].slice(0, 12);
 }
 
+let SERVER = "http://localhost:8787"; // popup overrides this with the deployed URL when set
+
+// Full-text excerpts from the evidence server (publish/server). Returns null if it is not running.
+async function deepEvidence(query, host) {
+  try {
+    const r = await fetch(`${SERVER}/evidence?q=${encodeURIComponent(query)}&host=${encodeURIComponent(host)}`);
+    if (!r.ok) return null;
+    return (await r.json()).map(f => ({ outlet: f.outlet, edition: f.country, title: f.title, excerpt: f.excerpt }));
+  } catch (e) { return null; }
+}
+
 async function analyze(key, page, lang, onStatus = () => {}) {
   const host = new URL(page.url).hostname.replace(/^www\./, "");
   onStatus("Reading the article");
@@ -74,12 +85,13 @@ TEXT:
 ${page.text}`);
   onStatus("Looking for other coverage");
   const claims = ex.claims.slice(0, 4);
-  const found = await Promise.all(claims.map(c => corroborate(c.search, host)));
+  const deep = await Promise.all(claims.map(c => deepEvidence(c.search, host)));
+  const found = await Promise.all(claims.map((c, i) => deep[i] ? deep[i] : corroborate(c.search, host)));
   const evidence = claims.map((c, i) => ({ claim: c.claim, cited_source: c.cited_source,
-    other_coverage: found[i].map(f => `${f.outlet} (${f.edition}): ${f.title}`) }));
+    other_coverage: found[i].map(f => `${f.outlet} (${f.edition}): ${f.title}` + (f.excerpt ? `\n   text: ${f.excerpt}` : "")) }));
   onStatus("Comparing");
   const out = await askJson(key, `You compare a news article with headlines from other outlets, found on Google News.
-Judge each claim ONLY from the headlines given. Never say who is lying. Never call an outlet reliable or unreliable.
+Judge each claim ONLY from the headlines and article text given (quote the outlet when you rely on its text). Never say who is lying. Never call an outlet reliable or unreliable.
 Status per claim, one of:
 - "confirmed": reported by several independent outlets, or by a wire agency (Reuters, AP, AFP)
 - "contested": other outlets report something different
@@ -98,3 +110,4 @@ ${JSON.stringify(evidence, null, 1)}`);
 }
 
 if (typeof module !== "undefined") module.exports = { analyze };
+function setServer(url) { if (url) SERVER = url.replace(/\/$/, ""); }
