@@ -1,0 +1,972 @@
+[
+ {
+  "id": "mbappe-mao",
+  "topic": "Sport",
+  "title": "Mbappé apologises for calling Mao a \"dictator\", Chinese brands drop him",
+  "by_country": {
+   "FR": 18,
+   "ES": 14,
+   "GB": 19,
+   "US": 15,
+   "QA": 4,
+   "DE": 1,
+   "CN": 34,
+   "AE": 8,
+   "SA": 1
+  },
+  "n_outlets": 60,
+  "wires": [
+   "AP News",
+   "Reuters"
+  ],
+  "countries": [
+   "FR",
+   "ES",
+   "US",
+   "GB",
+   "CN",
+   "AE"
+  ],
+  "country_names": {
+   "FR": "France",
+   "ES": "Spain",
+   "US": "USA",
+   "GB": "UK",
+   "CN": "China-based media",
+   "AE": "UAE"
+  },
+  "headlines": [
+   {
+    "country": "FR",
+    "outlet": "France 24",
+    "ownership": "Funded by the French state",
+    "leaning": "center",
+    "title": "Mbappé apologises over Mao Zedong joke as Chinese brands drop sponsorship deals",
+    "link": "https://news.google.com/rss/articles/CBMilAFBVV95cUxPRWdDTXZrMUplc3ZLajZTdXFVaVNfYUdkcGVKdHZXN2NLYTVsdmM3M3hPRHplMXY2NUlQZ3QwcW00bGVOc2JveVR2X19wMjV4OEU2ZUxiWXNCbFBxRnhyM0NNWUtLVTZFejJZZ2FEZHlYRnFCWmlQNkR0WmRTZnZkdXV2UnR0elZ0RkV5dWpndTVnNHVU?oc=5",
+    "published": "2026-10-27T03:54:02+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "FR",
+    "outlet": "Le HuffPost",
+    "ownership": "Private",
+    "leaning": "left",
+    "title": "Cette référence à Mao Zedong coûte trois sponsors chinois à Kylian Mbappé",
+    "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQS0tLNEZETWJDOEZiZ3FsVV9OUmc1Z0J6ZGFYLTN1UmJVaEZOZk5MZVE2OHNpdUdjZVQ0clpMLU9Yai1ZRlppdEZNWGRiOGE1ck9JcTAxTDdNdzh1aHlUT0FGLVNzNXpkUnczeG9taUN0SFpiblA3MnJ1T0VkekdPck40OTVUdENUeWFna2R3YzV4QkVsTEVHTUgzcU5GMHY3U2VvbHZybDVVeXNjQkYxQktCcWsxb1ktcVdnempFS0xRVE9WbnlCYw?oc=5",
+    "published": "2026-10-27T07:46:04+00:00",
+    "lang": "fr",
+    "translation": "This reference to Mao Zedong costs Kylian Mbappé three Chinese sponsors"
+   },
+   {
+    "country": "FR",
+    "outlet": "Libération",
+    "ownership": "Private",
+    "leaning": "left",
+    "title": "«Dictateur» : Mbappé rattrapé par le col en Chine après un commentaire sur Mao",
+    "link": "https://news.google.com/rss/articles/CBMi1AFBVV95cUxPWmVucjlwZ2c5aW1xMmFhMFJhTm1rMUVXOEJFVm5sS0lSNXdZMHIyUFQ1emg0MVVnZEgwMm9SREpGMjN1RTBmbG9QazJBNHlaQXJDcGpHRFZ1bVRfYjRVOFRXVThQZkRPY295N0JNdGJwUHhlT1ZoX251Zk9YRHpBWjMyS3duNWxoeFZGY3k2OXhjdjZmWlQ5ZkxWM3lvSWZHU2UzVWk2ZEU2c0JhWVNRTGoyWEdyVHNnNmw2RmtCOEphWlBSc256UGpTeFR6NzlCNzBmWg?oc=5",
+    "published": "2026-10-27T09:09:00+00:00",
+    "lang": "fr",
+    "translation": "\"Dictator\": Mbappé caught by the collar in China after a comment on Mao"
+   },
+   {
+    "country": "FR",
+    "outlet": "L'Équipe",
+    "ownership": "Private (Amaury group)",
+    "leaning": null,
+    "title": "« Sincèrement désolé » : Kylian Mbappé présente ses « excuses » après la controverse sur Mao Zedong en Chine",
+    "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxON1Uya29KU084TkVmbm9oVmZZZFdBOVhmdlkxNWRkb2w5Um9zS200Y0lFR19jN0p5ck9MUHJwWml4M2RjYVB2WTNlT0RHTXRVc19tVk1oSEFkWXhLRW1sTU50NFM5SUVwOFdzMHI3b1dtN2tYazNER1RpLTNpRThjbHlXMWw1dnd6SDlRRnF1cTFzTUkxUnU5bUJoR1FhUFg0b01DSlRMNzk2bUk0Q1JVUVZoa0NIS09iT1MxWnZDNVB5QktPQV8yZ0FkeVFsMDdMdDU2MjZXbU9iZ1RVT2dXYnNFaW4?oc=5",
+    "published": "2026-10-27T11:48:56+00:00",
+    "lang": "fr",
+    "translation": "\"Sincerely sorry\": Kylian Mbappé presents his \"apologies\" after the controversy on Mao Zedong in China"
+   },
+   {
+    "country": "FR",
+    "outlet": "Le Monde",
+    "ownership": "Private",
+    "leaning": "left",
+    "title": "En Chine, les propos de Kylian Mbappé sur le « dictateur » Mao ont un coût financier exorbitant",
+    "link": "https://news.google.com/rss/articles/CBMi6wFBVV95cUxPY0pubXQ4TS04Zk1XOXJtS203ZGkzY0cwWVRKT19oQTFVNTdsRTlOUDJmUEVUbjY0SVdnRHBRTWlTOGJDNjdtZE85S3c1TTFPMklQMkdGY0gzVDZGUFBBQ29QQTBOdEZCeHpIejd3YkUteUhCTGw1NjBGLWhGaEhncmlJSnM5NjZoTjVOWHVrNUJLOXhCckl6dWZaLXNVZF9oUUhLX21Dc25sSVVMLWk4dGxMZU5DTFc1UzVwVHNmUTI2ZVF2TlRYOXlLejV6c1F1WmoyclUxLWItbDgxSDV2MThrVVRIUGNoTVMw?oc=5",
+    "published": "2026-10-27T12:36:32+00:00",
+    "lang": "fr",
+    "translation": "In China, Kylian Mbappé's remarks about the \"dictator\" Mao have an exorbitant financial cost"
+   },
+   {
+    "country": "ES",
+    "outlet": "ABC",
+    "ownership": "Private (Vocento)",
+    "leaning": "right",
+    "title": "China, en pie de guerra contra Mbappé: vetan los partidos de LaLiga y rompen acuerdos con él tras calificar de «dictador» a Mao Tse-Tung",
+    "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxNNW9rYnd0ck0zeHk0M0haRFlCSzl5X1o3cmpVNmFQQTk3ZWh2N1lGaXNxZ21MRzdPanQySUdrcHZQTno2ZldQZU1VbklMOUFwSUlzaU1ORDBpSFFOa0dTQTZxVXB5SlZ1dzNUNTdoQ0c4dkdHYVg5TmltZ2JIMkZfYzktWDJyVTd0SzdBQ2o1bFI2QjFFLWt2bHNyOGJaeUJhV3BIRGR30gGrAUFVX3lxTFBUZDN0T21NNnRvZ2gtSjdKQTVRQUFLRko0OUQtN0p6SEp2cVhGNG9BNkpacHM5S05yT1hVNHhxWFNqS1dZWkNLR2JFUW9LYlA2YWhtTXJvRG5RZmdZVExGYl9PSHB2NEhxVW0xTlFKUk9SRnBMdzJZcVc0TXdnLVdtT190a0xCR1VCdTJmbG9mVkpZQmJsZk1QbmdlYW5hZ2M4dGRCbkZRYTV2SQ?oc=5",
+    "published": "2026-10-27T08:28:13+00:00",
+    "lang": "es",
+    "translation": "China, at war against Mbappé: they veto LaLiga matches and break agreements with him after calling Mao Tse-Tung a \"dictator\""
+   },
+   {
+    "country": "ES",
+    "outlet": "elDiario.es",
+    "ownership": "Private",
+    "leaning": "left",
+    "title": "La suspensión de partidos de LaLiga en China obliga a Mbappé a pedir disculpas por llamar dictador a Mao: “Entiendo que he hecho daño”",
+    "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNOXdfS1djd2NGT1hvOXp5bE9vTThlZVBvNUhIcjF6UHUyWDVBaGd5ZE90d3VDNFRMZXJ6QXZDcUlOV2N4UWxQLTc4WUgybXZkYms3dmR0VEY1SU55Y2VuMF9XVlJ2alp5bkZQeE9oRlhQSkFuYUhsdFBrMUhoTk5oOHlYZWpIQnQ5RmVQNy14VHZmeHhkTWVobEdCWmt3RFE2bHQ0OUx0WE5SMGZTaC1sQnhWNFpCZVdJdmNDS3lIZGt4cVRaM1HSAcsBQVVfeXFMT2N2UkNQWHU3Rkw4cG1nWWFOcEFXZjlZRkdhWl9XemRqcmFMSWlZclhnUmw5RGFUeEhCNlNUN241dm80UWlXalJFQnJqYVAzeWUtbVEzbDJsbzEwSkZ0ZEQydDlMRmhiSWRNNjF0dDh0QjJjWHBlc1FhMV95SnBsSlJDbkJON2JSaDBtUkZReWZiX0tQcmpoVmEybHhLcnAxSTZxdTlKUU1waHBOV3FLdUNId0EtSjBFV0syTXE5LXQ0eEFzSUlTQnNnTGc?oc=5",
+    "published": "2026-10-27T10:07:53+00:00",
+    "lang": "es",
+    "translation": "The suspension of LaLiga matches in China forces Mbappé to apologize for calling Mao a dictator: \"I understand I have caused harm\""
+   },
+   {
+    "country": "ES",
+    "outlet": "RTVE",
+    "ownership": "Public broadcaster",
+    "leaning": "center",
+    "title": "Mbappé se disculpa por llamar dictador a Mao, tras el boicot de la televisión estatal y varias marcas chinas",
+    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPUWZ2UkRyVFlocHNsVDNseWJyM1RSTjVyRkowT2syT2w4eW51NGh5dUpEeGNtaDlZcXMwczM3YlNERXNxWDRFOXo3am9CRE1RRlZ1UFRGNkhoLVU1UnUwNzVZcWxnZW1hR2xKQkpYSUZMNEZKWjVHMWQ5NTd5aXgyWlNBX1dWSnJTaXkweFRyeXM1NUd6NnZCZ3hDakZsZVNXQXA5b0s4NFVVVjhlREY4dXZfa2QtUWZmYm9RelR5Q1dEZXhRLU9r?oc=5",
+    "published": "2026-10-27T11:14:02+00:00",
+    "lang": "es",
+    "translation": "Mbappé apologizes for calling Mao a dictator, following the boycott of state television and several Chinese brands"
+   },
+   {
+    "country": "ES",
+    "outlet": "El Español",
+    "ownership": "Private",
+    "leaning": "right",
+    "title": "Las secuelas del 'meme' de Mbappé y Mao Zedong: apagón en televisión, contratos rotos y el mensaje de Tebas a China",
+    "link": "https://news.google.com/rss/articles/CBMi7gFBVV95cUxQdUlqWC1LLTV4MnpmbmtiNnpwZnNHalFZdjZOUlk2LTJmcGRkc0paU0J0Ykc0RldnWVNycDJLYjFWeFdhYzNRQkt3X2Q0bGx4Q1RrckpNN3p5ZHBZOG55dW0wU05Mc1VhTnZCRzlULTdLSmFUaENjWUI1bWJOQzF2T0FMWkctLXZNWFM4bDNPNVlpVzFIbXM5LUkyRHdLeFdTNnFDMmVhX3BjSzQzTXVISUxQRFBiSU9lLVZIdjFfUFVHYkx1VDAtQjRCMjVCQ3FKanExM05qZ2phNW03dnA2THdPTllyTTRZTXBLQjRn0gHzAUFVX3lxTE5maWtSYWp5aW1ucjNqdktCMkFpN09PRTJLU0ZNZHU4dkRfbTI4eDM1am5fTXdSckg1NjlWMkMxbXRScHhQVTg0Z1FuX01OeVBSbHZxN3NlQnFGeS02UFJtUWdkWFZDUG1NMmpiS01kOTZTWURTWjhnLXJxYThtdGxOdjR0cVYwN3QyZ21ocWxqYWRZRXFuMzc4NWUtMG14N1RWTkVSNGttLW01TTlYeURoTVlsQ2VLeVNRb3dtdjNGOVRmazlSRFcxSTd0WmJhRWtHQWFQSkg0REJpWmY2d2xNa3ctanNvbjBrUW5YbjJhY05PYw?oc=5",
+    "published": "2026-10-28T04:00:00+00:00",
+    "lang": "es",
+    "translation": "The aftermath of the Mbappé and Mao Zedong 'meme': television blackout, broken contracts, and Tebas's message to China"
+   },
+   {
+    "country": "ES",
+    "outlet": "La Vanguardia",
+    "ownership": "Private (Grupo Godó)",
+    "leaning": "center",
+    "title": "Un profesor de Historia está detrás del meme de Mbappé que ha encendido a China",
+    "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOWDJFRWZfMzBwdm1jNVZiQXltWVlJTV9KSUM3YkJtaU9WMGw2bmFia2xwRXRMWWtVQnZhSEdSZFRySnl2R2ltb2ROTnRnMmdnM09uSGw1RV8wd25GN29LNWo5dkViRmt2Zjk2NV9ZOXRRRTlFN3FWMkVEcWN3WXRKcHpBWGI4bHdEX1J2T0Rqc0IyTHQwTmNDSk5PZmw1Z2JwQ0ZoX0ZWRm5kRWxPVGFuTUtTanEtVExMaFdySG9YN0dIcXNQSjFnOU5R0gHPAUFVX3lxTFBDNVcxdXBzZmZnYnhDVEVtcHd1QlF3YTRlcGNTbkpwQ1BTdWpUVUlPbThZYzVSOGlncDVwRnlHeTZ6dFlqTzlRSTFGX2dXWFBaQzJINnZuV2c4ME5UTnNKTi1kNExGV3Q1Wnlrd255aEVKcnFyT1gxUWFVSEFWelI2eGNMM2ZCSEkyT2taUENsRnc5VGxWdmtqemdNZjFMbjRWbmdNZVAycU5nLVVxaTA3bGhPSVd5VGR6TkZwWk9jaEI5MTBXWFpzYU4zTDBLNA?oc=5",
+    "published": "2026-10-28T05:00:00+00:00",
+    "lang": "es",
+    "translation": "A history professor is behind the Mbappé meme that has ignited China"
+   },
+   {
+    "country": "US",
+    "outlet": "NBC News",
+    "ownership": "Private (Comcast)",
+    "leaning": "left",
+    "title": "Mao, memes and Mbappé: Chinese brands drop soccer star in fury over ‘dictator’ joke",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxOc0g1WlFJYmZFRWZGNkZfeFFxN0hBZ1ZDU3ZsWlU5QVc3MW8zMzcxREJnNlRveUhMTW5yY3l6X0I0QXo3cjNWQVZZbFhOTDF2NjR3ZFhTUnh6SzlrbWs4X0JFcmF2MHRlRHY3Q2pIcTltRWJPcDZRTUtBSTR0WlZ5ZEswZ1QybGtjeFY5UWFXdmNhX3hPSmRsQlZDc2Y1UQ?oc=5",
+    "published": "2026-10-27T12:42:05+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "VOA Chinese",
+    "ownership": "Funded by the US government",
+    "leaning": null,
+    "title": "在多家中企宣布终止合作后，法国球星姆巴佩公开道歉 美国会委员会：他不应该道歉",
+    "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNLTN3dmxacVBqdHgwVmk5UTZhT0dzNFVXbDM3cnY5ZlgyZFNJRGt3bjczOUNNdDBuMGJQVkduYVpVLWZYczNfZ0VETFlKX3dPMGJxcTkyWVhNWHJHcjdnZXVqQUxJS3NRVHl5OXhTVUh5UHpzWGNHUTc4bWw5bXVoaEFKYnF1cTlERUFQTVo5eDlaSmtESUFoUm4yT3BfQk9zdTVMa1dsNXlnS2hkTVplZmVJMXNZTDZONC1OMjd4WDlRVXdWUjJQQjd1aWlYVGdNZG0tY3VwNWN6VmE3dWVCTnNsTHdFQVnSAeoBQVVfeXFMT0VUbWVEa2hFQVV2cTNPUzQwbGZlWi0ydE1Fc1dRVEN0ZGx2Ql9ZWGVjR1hWdXlYbkxXMmhnRXI3S2ZWOHFMc0E1RWdWd1JUbVdIS1ZiaGxURGlCa2p4czZmVlFOTGNEY0VLeDdOQmpZVEdRY1FkQ2k1bkRPbzhRYUVDT1NoYUN0dllSUjVBMl9KNzNsemJ6OS1jRUNyTklSZlAxN3lPeUNQaDZvTzNVOEEwMTRPUngxU3YxMlAxUTRYcng5YmtzWExyd2NuT1VEc0Jxb21Kb0wtV0V6MHZfU3Jtam5UTW9pMkJR?oc=5",
+    "published": "2026-10-27T13:58:27+00:00",
+    "lang": "zh-CN",
+    "translation": "After several Chinese companies announced the termination of cooperation, French star Mbappé publicly apologized; US House Committee: He should not apologize"
+   },
+   {
+    "country": "US",
+    "outlet": "Bloomberg",
+    "ownership": "Private",
+    "leaning": "center",
+    "title": "Mbappé Apologizes for Perceived Mao Insult After China Backlash",
+    "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxPTEozYkVLU1c1QzJqVkVnbTJXOUFVS3plcms3RHNscVZYV2pxek8tSHZPa1NhNmtLTV8xY0hXTnFXa0NWSFJySjdsbm9KQWsxZTlham5QeFl4bno4ek13SVo2UVZxSUVPRVFjeUdZbXRvdDFCa1hRZzY5ejFzNTB0MThPbm5xUVM2ZGJrT0NnNDFBMVg3VURQdHJnYmFoWXU3emtVRVhPQ2pPZXRqeVYtN2JVYkw2aW4wMWpPZVdBNHhNTGxXNzBr?oc=5",
+    "published": "2026-10-27T18:01:40+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "WSJ",
+    "ownership": "Private (News Corp)",
+    "leaning": "center",
+    "title": "Global Soccer Star Kylian Mbappé Just Apologized to China—for a Mao Zedong Meme",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE5lYWZ3WTVEQkNMSDNTbndQYlRpVTFXUUN1aVhGc0pTa25heUtzbWZ1MHZORi1YWm1TSlJYTUN1dXJyOEtLQVBJa3pUMXJvQ2hsOGJqVXFveVdETHNZY09IeFl3am4wRXdWVXlZa2d1NA?oc=5",
+    "published": "2026-10-27T19:49:05+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "AP News",
+    "ownership": "Non-profit news cooperative",
+    "leaning": "center",
+    "title": "Soccer star Kylian Mbappé apologizes for apparent reference to Mao as a ‘dictator’",
+    "link": "https://news.google.com/rss/articles/CBMimAFBVV95cUxNMTQ4UjVlWS1MVlhxNUFHOVlZSk1IWHk2ai1tRGdfRkNxQ2RBUmd1eDZKMXkxTTR5cjJYTDRxem5CXzRrQ0lUd3VkMFlTVUhHVlVReEk5MWZna1NPempEXzA2UUlqREZzNGNPazdRQlNWdWJqdUZxMTktZHBBV0xkNHAzcHFBbmVhVEY0NHNaYTZmdWpTaHViMg?oc=5",
+    "published": "2026-10-28T01:14:00+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "The Guardian",
+    "ownership": "Private, owned by the Scott Trust",
+    "leaning": "left",
+    "title": "Kylian Mbappé apologises after being dropped by Chinese brands for Mao Zedong comment",
+    "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOSzdEd3ljN1pmWEUySExDRGFYajUtWWlJcGtuZDNKNjVsOGNrRHFJcFRTdVRJdUpxUzhQWUV3NkZuQUk4MTQzNHNtVV9IS05yTll1MDFnUnlJVkxNcVRNZzc2N2hzODFSMjQzdmxhTUwxZHEtaU0wV012V1RkbFhpWTVPZm5HaF8xbXBtRHpoY2kwM1FzOVBjdWJvdUVjclNtd19TY1RGSXVpUVBTWVZvTC13?oc=5",
+    "published": "2026-10-27T06:24:00+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "BBC",
+    "ownership": "Public broadcaster, funded by UK licence fee",
+    "leaning": "center",
+    "title": "Mbappé sorry for 'ill-judged' Mao remark after backlash in China",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTE1jOGpuWDdCR1ZBYjFnSzVCS1U3ZXhiRmhEU3lfRlB3Z1FKZUNWaUY1MnRfU0FiSHI1R0ppNFRRdXgtNWVLWlozZ21KSkp5ZEFxNHp2empRcXdlaXc?oc=5",
+    "published": "2026-10-27T13:25:54+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "BBC",
+    "ownership": "Public broadcaster, funded by UK licence fee",
+    "leaning": "center",
+    "title": "Watch: The Mbappé-Chairman Mao controversy explained",
+    "link": "https://news.google.com/rss/articles/CBMiW0FVX3lxTFBlU3cxa25UbG9pNzRHc1NQSU1LNHRGa3ljR0VBUEpzS0NlaU13S1ZyY0puM2pfZUtjZmhSWnpxQ1ZMQkhHSm9QMXFweG1yYlV1cWNONGIwV3YyVkU?oc=5",
+    "published": "2026-10-27T17:11:27+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "BBC",
+    "ownership": "Public broadcaster, funded by UK licence fee",
+    "leaning": "center",
+    "title": "Mbappé se disculpa por un comentario sobre Mao que desató una ola de críticas y boicot en China",
+    "link": "https://news.google.com/rss/articles/CBMiXEFVX3lxTE0xZndpQW16UDFtLW1WYmg2ZU9SV29IRWp3YlBsTGtlQy1QYUdGZW1YNC1DaXdiOEFyUkVGcnVwUFJjelRrNW1tY2c1TXlzNUVJZDh4T0k2N05yTURk0gFiQVVfeXFMTU9WdV82UnotYmMxNDBTbFVXOVdxeW9fYXpPeThJN0VUOC1Ha0xLeGQ1bFUxY0FxZmFvU1RteF9VSF9HbHRtNUhaUDFQXzFYMDVaczJpM1czbE4tczM4Uk9seFE?oc=5",
+    "published": "2026-10-27T17:51:29+00:00",
+    "lang": "es",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "Reuters",
+    "ownership": "Private news agency (Thomson Reuters)",
+    "leaning": "center",
+    "title": "From 'Mobut' to Mao, Mbappe dictator meme turns self-mockery into China storm",
+    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNeUJTbHNFRDVKUk1tcDB0M0NVN1Q0bVlTMHg4WU1lalFlWmFnZE9jcjNYQ19BV08tWG5qV2F2dmdDOHFuaFRaQ3hYNkJpOUxMdkI3dDhBSklGelQxcUs2cGtReEVpUnVyOUpLLXBvRXVoSUZUS0RLeVhBYXRKa1RWRTV6enNabHNDZTlFRmhldDVLX1lXbXpvd1g5QzBIQ0ZsVGRHOWNCcjNRU3gyVy14TVA3SUd2QVE?oc=5",
+    "published": "2026-10-27T18:04:41+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "CN",
+    "outlet": "Sina (新浪)",
+    "ownership": "Private, operates under state media licensing",
+    "leaning": null,
+    "title": "人民锐评：姆巴佩的“翻车” 公众人物的镜鉴",
+    "link": "https://news.google.com/rss/articles/CBMizwFBVV95cUxQUFlZdHhROENVaUJieG9Vb2tUbkNSSGs3TERTOS04OXJKd0MzNkttZU9faDVMNkEzQmE0SnRCZVZtanRIc282SE1MdjZnUUQ2U0dwMzBYXzRLdk1LMVRpb3BxZzFMM3JVQnVHRWVTRUtYejhIeUtnaVZSbVNOWUJZYjA1RVFrclNYSEtZOXRaakZIV0dnZ2F6Zmo5WVItOVFDUVlIbGFzSVdhdDFLX1EyaDNMOXhRRUxBaWxOOWlRSkM1QXFhSGxnSGJabmdGLU0?oc=5",
+    "published": "2026-10-27T23:00:00+00:00",
+    "lang": "zh-CN",
+    "translation": "People's sharp review: Mbappé's \"crash\"; a mirror for public figures"
+   },
+   {
+    "country": "CN",
+    "outlet": "Sina (新浪)",
+    "ownership": "Private, operates under state media licensing",
+    "leaning": null,
+    "title": "皇马官方：姆巴佩仅代表个人，俱乐部和中国赞助商合作照常",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5KZFBOd0pERV84OUVQa0pycTlEaEtzSTJMMXNaQkR3LUFXZEtESU9PVGgyZ1hrUU5vMGN2U3M0dnh1T0VvQ0VNdjBnOC1rc3Z0ZW42RkVZVTRkQXY4U0xpSGptRXhmYXhSZWtQeG5uRHdKdw?oc=5",
+    "published": "2026-10-27T23:54:00+00:00",
+    "lang": "zh-CN",
+    "translation": "Real Madrid official: Mbappé only represents himself; the club and Chinese sponsors' cooperation continues as usual"
+   },
+   {
+    "country": "CN",
+    "outlet": "Sina (新浪)",
+    "ownership": "Private, operates under state media licensing",
+    "leaning": null,
+    "title": "姆巴佩发表涉中国不当言论后道歉，皇马至今未正面发声,“主张球员有权表达个人看法”",
+    "link": "https://news.google.com/rss/articles/CBMickFVX3lxTE5OeXFIVjVSdFNEbEwyaWhiaFR4OTQtQW9IcFZtOTdIZVo5TXBDcnRlYnp0a2RwUlVwNjVoT2VubnZxa3lxNHRXbFdMRDk1VnhWUE9ybUtVNUFFckRfMU50SjdGSVpqWG9IaWVhTzRHQ2hwdw?oc=5",
+    "published": "2026-10-28T03:50:50+00:00",
+    "lang": "zh-CN",
+    "translation": "After Mbappé apologized for inappropriate remarks involving China, Real Madrid has yet to speak out formally, \"advocating that players have the right to express personal views\""
+   },
+   {
+    "country": "CN",
+    "outlet": "Guancha (观察者网)",
+    "ownership": "Private, operates under state media licensing",
+    "leaning": null,
+    "title": "姆巴佩在华“翻车”，代价有多大",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE15TXo0R3VmOXY0cEJ3cndqYUpVOFJvdko0ZVFTOEdOdG9jVEhuWnpsaWo2TGszZHU4MnlJc0kxbzRCOE9xd3FXSHoyaDZ0NHU2eGV0Zlhld28yc0ZTWVgxUXIzNkNZdXFpa1U2XzVPWVh6UUE?oc=5",
+    "published": "2026-10-28T08:45:00+00:00",
+    "lang": "zh-CN",
+    "translation": "Mbappé's \"crash\" in China: how much will it cost?"
+   },
+   {
+    "country": "CN",
+    "outlet": "Guancha (观察者网)",
+    "ownership": "Private, operates under state media licensing",
+    "leaning": null,
+    "title": "皇马官方就姆巴佩言论致歉",
+    "link": "https://news.google.com/rss/articles/CBMic0FVX3lxTE9LYlczVUdIazF6WGJpWmZiWnVicjNVUEF0bktHZFNIR1JFdUNHVnZjODhhWlVheHBfZ0J3YUxQbEVmbEhzSnNLMHB0aDduX0lKYkRJNl9WTTVucmxyTjI4NjVBTkdPeXBRRlFXRlpOM3JEMTg?oc=5",
+    "published": "2026-10-28T09:33:00+00:00",
+    "lang": "zh-CN",
+    "translation": "Real Madrid official apologizes regarding Mbappé's remarks"
+   },
+   {
+    "country": "AE",
+    "outlet": "Al Bayan",
+    "ownership": "Owned by Dubai Media (government)",
+    "leaning": null,
+    "title": "الصين ترد رسميًا على اعتذار مبابي بعد أزمة ماو تسي تونغ",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTFBWbTQyM1JzeEVWVTVtVm1QY09NbWZXZjhoWXk3NnZjek5HUmF5V1prS3l0QTFlZGNPZDZTeDFHVUZJRlJ4WlR0TXZnQnRubDlhd2NzNXl3Tkdsa0NyOUR6OHhnMC0wajZvb2tVQg?oc=5",
+    "published": "2026-10-28T08:27:00+00:00",
+    "lang": "ar",
+    "translation": "China officially responds to Mbappé's apology after the Mao Zedong crisis"
+   },
+   {
+    "country": "AE",
+    "outlet": "Al Bayan",
+    "ownership": "Owned by Dubai Media (government)",
+    "leaning": null,
+    "title": "من صنع صورة مبابي التي أغضبت الصين؟.. القصة الكاملة ومصير المقاطعة بعد الاعتذار",
+    "link": "https://news.google.com/rss/articles/CBMibEFVX3lxTE41SDNJN0drbnJLNXJqellCZm5MbzU4WDdtbl9pR1hTbzZrZW9XVjJwbm5hVWRIbE85eGtRY3pYTGh1cmdWUzhvUFVpS0dZLTBrRWRJVkxlWl8ydDBORTlwRENOdVRzVDRoX185cg?oc=5",
+    "published": "2026-10-29T17:40:00+00:00",
+    "lang": "ar",
+    "translation": "Who made the image of Mbappé that angered China?.. The full story and the fate of the boycott after the apology"
+   },
+   {
+    "country": "AE",
+    "outlet": "Anadolu Ajansı",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "مبابي يعتذر للصينيين بعد جدل تصريحاته عن ماو تسي تونغ",
+    "link": "https://news.google.com/rss/articles/CBMi1gNBVV95cUxNYWNueU5Kb2VyeF9hMV82eXZOeEZXU3N0NjFHdEE5cm5iNG5LeW1GT1hrNXk5RVhSMVJrUTNpZVQ4ZmxDbTVzTUVreW91RC1CelJrYWFBdmxGQ0hMUmMyeGtDQk82M2k2YUY5cXhINkRmSjZUQ1k4NlBWby1mc1FXaDI3TmpiQTk1amZDX1R1M21KTG9Yamdsc3B2b1F6LU5nV0VKVkx1eDlBOXB0Uk9Xc2lKZl80b3NLSjVDNGM1di1FLUlmT2lNTy1kRUJ1ZEdSZ3pLUFo0S0tUV2VLOS1CODRZS05jMFRsZnRyczRVaWNUcVV2R0o4ZkUxdXlFM2ttZWVSOTNZckcxSExUeDZnQ1lWYVdRUG92NENkU2xLNVFiblk3emJtbFdJbzliTXJDYnFuUDVGdURJWTlxMVZWd2swS0lWa3VVZjZFNjhJU2dDRVpvTFVfNEpBUkdka0NnZFpFT0NwV3JMWGJoQWJXaUstNFFNWjRIQk93T211aTRVcV9vZ2t1MktMT2hLTkVaNWVGZ0ZJbl81T0FDM3luU3R5ckpRS2ZUTkZzNjhKU0lURkIwN25wbkd0ZFM3R1AwT0U2UDJVblkxYjBrM252NS1aSkNIUQ?oc=5",
+    "published": "2026-10-27T14:53:13+00:00",
+    "lang": "ar",
+    "translation": "Mbappé apologizes to the Chinese after the controversy of his statements about Mao Zedong"
+   },
+   {
+    "country": "AE",
+    "outlet": "Euronews.com",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "تصريح يورّط مبابي في أزمة مع الصين.. تعليق بث \"الليغا\" والنجم الفرنسي يعتذر",
+    "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQTlE1Ni1td0o0bXR2NHF3V3pVa3VXRFh3anNmWThnTmJTS1ladEt3LW9ucl8zUDJpRzZZZkVtb1J0NlJ3ZXVwVG5Fa3RkN1hUOGpSRHowaVIteFRCZlBZVEpyRjR1cDJuNFRMVzlyNlZ2aFNSbGV5emNJcm9lVEw1eHczWjhvdnAxUzM0ZnNvX1N3LVV4RW15MEVn?oc=5",
+    "published": "2026-10-27T16:21:13+00:00",
+    "lang": "ar",
+    "translation": "A statement that implicates Mbappé in a crisis with China... The suspension of \"LaLiga\" broadcasts and the French star apologizes"
+   },
+   {
+    "country": "AE",
+    "outlet": "صحيفة الخليج",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "مبابي يعتذر للصين بعد مزحة ماو تسي تونغ",
+    "link": "https://news.google.com/rss/articles/CBMi2gNBVV95cUxQN2lrdHI1VWxHRlJnX3hkbWdFNHhiMUtDQjYycF8wa2tQOGZ6a1R0VTJNOEZSR2dONEJOQVl1MEJwZEJ0RGMtaEY5aFlIUmNMZEFfd0lYYkVtemRjblNPbDRBc0xUV3dncktJWGNoMFlwTzBWNWpLS3Z4a1QwNkNjVndITFFlOTF1aUJrVlV1VVJkMzRuRkVBbUJSZEg2NWxxdlpoZHNTYkdudVdYVnZGYUtwU0VlbzcwMmc4YV8tRjJpWVZpTTdRYUxPR0o2X1NHejNjby12Ym1BWEM4a1pYYldQWE5CMG8zQ1gxNmEtX1pFNFBuc2RXVkNnYW5yVTZpbmItQlFZR0pCSWxQRjliWDhwem5xYnJaZlQ2QXNyaWRfR2xhLWN2Wjd4Z3FwaHF2WVAzenRaLXpfb1ZrLUp6ZDNwT19FdFcxN3U2MUZ5X01CZi15eVprY281cHg2OXRKbzdLdDRZY3pnQUJPQUluQm9BekNhdHZVRjRjWUNyeks2d3RSR1dNQi1QcUJKbU1NMHZZMW5uZWdLcjEyRmJiR1ZlOFUyVWpuaERPNlhlQ2liRVpqcmM2RFZtSzVWelpqTXE0aE54QkE5bks3MEhyS0Itc1dRRWtMOUE?oc=5",
+    "published": "2026-10-27T17:31:44+00:00",
+    "lang": "ar",
+    "translation": "Mbappé apologizes to China after his Mao Zedong joke"
+   }
+  ],
+  "common_ground": [
+   {
+    "fact": "Kylian Mbappé apologized for his comments regarding Mao Zedong.",
+    "sources": [
+     "France 24",
+     "Le HuffPost",
+     "Libération",
+     "L'Équipe",
+     "Le Monde",
+     "ABC",
+     "elDiario.es",
+     "RTVE",
+     "El Español",
+     "La Vanguardia",
+     "NBC News",
+     "VOA Chinese",
+     "Bloomberg",
+     "WSJ",
+     "AP News",
+     "The Guardian",
+     "BBC",
+     "Reuters",
+     "Sina",
+     "Guancha",
+     "Al Bayan",
+     "Anadolu Ajansı",
+     "Euronews.com",
+     "صحيفة الخليج"
+    ]
+   },
+   {
+    "fact": "Chinese brands have dropped or terminated sponsorship deals with Mbappé.",
+    "sources": [
+     "France 24",
+     "Le HuffPost",
+     "ABC",
+     "RTVE",
+     "El Español",
+     "NBC News",
+     "The Guardian",
+     "BBC",
+     "Sina",
+     "Guancha",
+     "Al Bayan",
+     "Euronews.com"
+    ]
+   }
+  ],
+  "sides": {
+   "FR": {
+    "reading": "Outlets focus on the specific label used and the resulting financial loss.",
+    "loaded_words": [
+     "rattrapé par le col (caught by the collar)",
+     "coût exorbitant (exorbitant cost)"
+    ],
+    "leaves_out": "The origin of the meme."
+   },
+   "ES": {
+    "reading": "Coverage emphasizes the broader impact on LaLiga broadcasts and the identity of the person behind the meme.",
+    "loaded_words": [
+     "en pie de guerra (at war)",
+     "secuelas (aftermath)"
+    ],
+    "leaves_out": null
+   },
+   "US": {
+    "reading": "Headlines frame the incident as a joke or meme that caused a backlash.",
+    "loaded_words": [
+     "fury (fury)",
+     "perceived (perceived)"
+    ],
+    "leaves_out": "The suspension of LaLiga matches."
+   },
+   "GB": {
+    "reading": "Outlets emphasize the apology following an ill-judged remark.",
+    "loaded_words": [
+     "ill-judged (ill-judged)",
+     "storm (storm)"
+    ],
+    "leaves_out": null
+   },
+   "CN": {
+    "reading": "Focus is placed on the distinction between Mbappé's personal views and the club's official standing.",
+    "loaded_words": [
+     "翻车 (crash/failed)",
+     "不当言论 (inappropriate remarks)"
+    ],
+    "leaves_out": "The suspension of LaLiga matches."
+   },
+   "AE": {
+    "reading": "Coverage highlights the official Chinese response and the resulting crisis.",
+    "loaded_words": [
+     "تورط (implicated)",
+     "أزمة (crisis)"
+    ],
+    "leaves_out": null
+   }
+  },
+  "claims": [
+   {
+    "claim": "Mbappé apologized for his comments.",
+    "status": "confirmed",
+    "why": "Most outlets across all countries report the apology."
+   },
+   {
+    "claim": "LaLiga matches are being suspended in China.",
+    "status": "single_source",
+    "why": "Only Spanish (ABC, elDiario.es) and UAE (Euronews.com) outlets mention this."
+   },
+   {
+    "claim": "A history professor was the creator of the meme.",
+    "status": "single_source",
+    "why": "Only La Vanguardia (ES) mentions this."
+   }
+  ],
+  "watch_out": [
+   "There is a discrepancy regarding whether LaLiga matches are being suspended, as this is only mentioned by select outlets.",
+   "The VOA Chinese headline introduces a US Congressional perspective not present in other regional coverage."
+  ],
+  "divergence": 60,
+  "briefing": {
+   "en": "Kylian Mbappé has apologized for his comments regarding Mao Zedong, leading several Chinese brands to terminate their sponsorship deals with him. French media focus on the specific label used and the resulting financial loss. Spanish outlets emphasize the broader impact on LaLiga broadcasts and the identity of the person behind the meme. American headlines frame the incident as a joke or meme that caused a backlash, while British outlets emphasize the apology following an ill-judged remark. China-based media focus on the distinction between Mbappé's personal views and his club's official standing, whereas media in the UAE highlight the official Chinese response and the resulting crisis.",
+   "fr": "Kylian Mbappé a présenté ses excuses pour avoir qualifié Mao Zedong de dictateur, entraînant la fin de ses contrats avec des marques chinoises. Les médias français se concentrent sur le terme utilisé et les pertes financières, tandis que la presse espagnole souligne l'impact sur les diffusions de la LaLiga et l'identité de l'auteur du mème. Aux États-Unis, l'incident est décrit comme une blague ayant provoqué une réaction, alors que les médias britanniques insistent sur l'excuse consécutive à une remarque malavisée. Enfin, les médias chinois distinguent les opinions personnelles du joueur de la position officielle de son club, tandis que la presse des Émirats arabes unis met en avant la réponse officielle de la Chine et la crise qui en résulte.",
+   "zh": "姆巴佩因称毛泽东为“独裁者”而道歉，并导致中国品牌终止与其的赞助合作。法国媒体关注其使用的具体措辞与经济损失；西班牙媒体强调对西甲转播的影响及模因背后的身份；美国媒体将其视为引起强烈反响的模因；英国媒体侧重于其发表失当言论后的道歉；中国媒体重点区分了球员个人观点与俱乐部的官方立场；而阿联酋媒体则突出了中国的官方回应及由此引发的危机。"
+  }
+ },
+ {
+  "id": "novaya-gazeta",
+  "topic": "Politics",
+  "title": "Novaya Gazeta, Russia's last independent newspaper, announces it will close",
+  "by_country": {
+   "FR": 19,
+   "ES": 12,
+   "DE": 2,
+   "GB": 11,
+   "QA": 1,
+   "US": 7,
+   "IN": 1,
+   "SG": 1,
+   "CN": 3,
+   "AE": 4
+  },
+  "n_outlets": 56,
+  "wires": [
+   "Reuters"
+  ],
+  "countries": [
+   "FR",
+   "ES",
+   "US",
+   "GB",
+   "CN",
+   "AE"
+  ],
+  "country_names": {
+   "FR": "France",
+   "ES": "Spain",
+   "US": "USA",
+   "GB": "UK",
+   "CN": "China-based media",
+   "AE": "UAE"
+  },
+  "headlines": [
+   {
+    "country": "FR",
+    "outlet": "RFI",
+    "ownership": "Funded by the French state",
+    "leaning": "center",
+    "title": "Russie: le journal indépendant Novaïa Gazeta annonce sa fermeture sous la pression des autorités",
+    "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNcDdVOXlDaU5UR2tzQ2lzVGVsZ2g4NlpUZ3B3eGJlTVl1MVJhRGt3NDh1dy1jbWwwd3JNbDd1cVpTbHBhRzlydFVUX3ZrUWdNVS03UnVOTWdCVGVfTWZscTgyX0tzWmNaMm9JMTRWekhZSDlXYzNIVldZOXk4TURTMlJmcmFiZXZqei1YNmdub2sxZWNNYWl3YTR3UFFRQndwWm5ueEJlWERCTU5mdDdEXzBxYVBLNGJEa1hNVW1DTkZQVEZZUUtYSkN4LWdXMFJKNWpsd3pBRUtYeWQwWHJ2SS1EYw?oc=5",
+    "published": "2026-10-30T07:43:36+00:00",
+    "lang": "fr",
+    "translation": "Russia: the independent newspaper Novaya Gazeta announces its closure under pressure from the authorities"
+   },
+   {
+    "country": "FR",
+    "outlet": "Le Figaro",
+    "ownership": "Private (Dassault group)",
+    "leaning": "right",
+    "title": "«Ils nous ont tués» : le journal indépendant russe Novaïa Gazeta annonce sa fermeture sous la pression des autorités",
+    "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxOWFdSOWdnbWJuVU5tVkhFbkJyZVNtZkhfSktfdzZManV0SENmZ0V1aUFybk53V21mOVpteThqNWw5N3AtQ1k2cnNWM3dCVXI2UTBkdTkyaEp6QWcwNlRYS3lnbEYyUDAwcnc5bzlwR3J2NDlCeXNvTEtkblNzc3EyYk11em80dy1iYWpBWV9BbWh5bi1UQVk2R1k2ejgwckNFMWU2YlN2S1ZndFNLYlptbXhRaHZhRXFiaFEzaVBEdTl1ZUVoaWx5dExlRExPUkNTVF9ScXV6UXBPQQ?oc=5",
+    "published": "2026-10-30T07:51:13+00:00",
+    "lang": "fr",
+    "translation": "\"They killed us\": the independent Russian newspaper Novaya Gazeta announces its closure under pressure from the authorities"
+   },
+   {
+    "country": "FR",
+    "outlet": "France 24",
+    "ownership": "Funded by the French state",
+    "leaning": "center",
+    "title": "Russia's bastion of free press Novaya Gazeta shuts down under Kremlin pressure",
+    "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQRTlNV3N3WTN0N2JzRW1QWDFEWTFsVWV2VEtSc1FFU1gxWUpMYm1hc1pNNnBIS2FDeFd4eXBmdk01c0FVaGp5SmxxWkNGMnQtSHVnbXNZWWZLUTVGZk14dno5R0xYMi1vS0xFTFQtMXF0STZyaF92WTBmNEs5QWJXcTFVeEVwaUxPcWQzanNMRC1JUU5Nc1ItNUdxTUFtUmxBcTZydkNCdldqM3pVTVd5YkZTbFI2MGtZbDhqNFItRFJRbVk1MTM0ZE1ncw?oc=5",
+    "published": "2026-10-30T08:42:24+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "FR",
+    "outlet": "Libération",
+    "ownership": "Private",
+    "leaning": "left",
+    "title": "En Russie, le journal indépendant «Novaïa Gazeta» annonce sa fermeture sous la pression des autorités",
+    "link": "https://news.google.com/rss/articles/CBMimgJBVV95cUxOdEdwajNmQ20ySW5OZG9vN1ZBR1RnZWlvNjQ0Z0k3RGhFV3k2NmlsZ0otaTRnUXNrTkplckpqMVJTQUZNSlJlWEstdGlXdlJmblVaamlXUFFkSVh5QnhiQXFReUctN19peEU1VXdSM1BNZmhzdXlqajIzaTNGd0xxcy1BNVp6bUlBbDlURGstVXd3R3hrUFU3d1FyUS1PMmVJbWJpMF9XYkFNakpNa0RCaTRGaE9JeENxc3luRWdva2NMd20xT0RubmpHTzFXbWZSenVzTW1iOUlxc1o0d2tYdWtIdU51UlBSR05OdTN6S21HS2psTVZ6QTBkN3VXX1B2NFhGREVMdXNaZExtc2V6dFRNQ19yMGFIMEE?oc=5",
+    "published": "2026-10-30T08:48:43+00:00",
+    "lang": "fr",
+    "translation": "In Russia, the independent newspaper \"Novaia Gazeta\" announces its closure under pressure from the authorities"
+   },
+   {
+    "country": "FR",
+    "outlet": "France 24",
+    "ownership": "Funded by the French state",
+    "leaning": "center",
+    "title": "\"Ils nous ont tués\" : le journal indépendant russe Novaïa Gazeta annonce sa fermeture",
+    "link": "https://news.google.com/rss/articles/CBMi4wFBVV95cUxNODJuX3JKY1V5Qlh1WHd1YV9YZmdjenUzeXVfR1ZabTRqcFVHZmtIRDFlcGFmQ3YtcExfV2M0M1lvR2hBN0RtVHJwYmp4emJqVlJwdjJSWS03cEw2SlUxQWdIMXE5TmdMUS1CeXpGSjFWN1dHdmJhMnM1aHFwX1A4dDFPSEpLZGo2bURqa1lQaTJJd085eEdvUHhKTHk0azhCZE5SajFUaGp0d1R4dEkwai14dl9QSHE2dDRIcTY4WUpEOVppMU9rb056TmdXODRLVDJuZ0w3cnJKQnpIRHQ4ZDRzZw?oc=5",
+    "published": "2026-10-30T10:02:01+00:00",
+    "lang": "fr",
+    "translation": "\"They killed us\": the independent Russian newspaper Novaya Gazeta announces its closure"
+   },
+   {
+    "country": "ES",
+    "outlet": "Cadena SER",
+    "ownership": "Private (PRISA)",
+    "leaning": "left",
+    "title": "La persecución de Putin liquida 'Novaya Gazeta', el periódico opositor cuyo editor ganó el Nobel de la Paz",
+    "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxOSzkwTUVuUVItSXVkdzdGRHp5a0NJRjQyd2tHRk1zdjN6NWl5NkRhamE1YjJpNm9RRWgwMHl0UjM3R1pfaEFtb2Z0UWl2WXUtc3lWQy1DaW1LeXkyLVBpNXpPMk84bzRYM3k0d0NNUDNjcGJBZFhEdU5UaU9ZZmxYMkZ1YkF6ODAzVkhPWDluc18wdXlWdWUtTEl6SlU4cUQwZjFTWXdsNmJRMlU1TmRRUW94UkxJZm1HOTNPYTFzWG9QSVI2aXFkU09nWmtYN2l4ZkVtYklZY3FqUXhqR0NnOWdRVmpBUzVKQ3ByVjVhOUhUd0FuR0xFcXdXWEt3YWd1dUHSAYICQVVfeXFMTks5ME1FblFSLUl1ZHc3RkR6eWtDSUY0MndrR0ZNc3YzejVpeTZEYWphNWIyaTZvUUVoMDB5dFIzN0daX2hBbW9mdFFpdll1LXN5VkMtQ2ltS3l5Mi1QaTV6TzJPOG80WDN5NHdDTVAzY3BiQWRYRHVOVGlPWWZsWDJGdWJBejgwM1ZIT1g5bnNfMHV5VnVlLUxJekpVOHFEMGYxU1l3bDZiUTJVNU5kUVFveFJMSWZtRzkzT2Exc1hvUElSNmlxZFNPZ1prWDdpeGZFbWJJWWNxalF4akdDZzlnUVZqQVM1SkNwclY1YTlIVHdBbkdMRXF3V1hLd2FndXVB?oc=5",
+    "published": "2026-10-30T08:58:53+00:00",
+    "lang": "es",
+    "translation": "Putin's persecution liquidates 'Novaya Gazeta', the opposition newspaper whose editor won the Nobel Peace Prize"
+   },
+   {
+    "country": "ES",
+    "outlet": "La Vanguardia",
+    "ownership": "Private (Grupo Godó)",
+    "leaning": "center",
+    "title": "El periódico 'Nóvaya Gazeta', bastión de la libertad de prensa en Rusia, anuncia su fin: “Nos han matado”",
+    "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxNNjg1VjAtMjUxcFA2aUNQT0FsUm1Ud1R1TVlRcW1nYUVOazk3QXpDWmh5RHV4OVE3SXVNXzR4YmNMVXo5czJ5RjBfMHpYYXZJaVczR19GRGZWaENJUTg3dkRXLXJCMDZ6TmE5UTIyZ2lrMzJoUmFTbXBQMk0ya2EzTjViVU1wdGtuNDNJY2N6WDRPVGdiRUdGR2c4aUN4b0d2MmJWbGNyNWRCTVR2dWhGRWNmdjlHY2xQZEplc3RESmpMTUNYczNFSVF5dDk4MzM3Y2k1WUxod1JiWWdGN0xSVThtY1h0WjZJVTZLRmZLcnE0SThJdHl30gH8AUFVX3lxTE4xNk5yMk5Sa1hoMk1PM09ma1VpbHFEN1Qyc0dyc0FFbmhSUkR4SFdILTFFSFM2d2YwZmZ5TmN3TEo2YkNOT2VUR0xXa0tKNk90UDRUNG5ITm9Sc2ZnZ2RGSWdmZVZkS3RqOVFoUWlwMm5SVnJiZjdlYWlYckRlQWFwNEsyNm1ualFOMHZUeW9TV082RHRZYWpEdWN4ZkpCMGZWWE5oWlpIdGdWYTlkVzlvUnozaGRJVWxfdm96MXhqZm9VOUpmNnJ2UnBxRlpqWm8wVWFiczVyYno4aU4wMW5fRmJWMlMzVzRzSmNLMEhrQXVHZjJuUmpsQmh4RA?oc=5",
+    "published": "2026-10-30T09:52:17+00:00",
+    "lang": "es",
+    "translation": "The newspaper 'Novaya Gazeta', bastion of press freedom in Russia, announces its end: \"They have killed us\""
+   },
+   {
+    "country": "ES",
+    "outlet": "El País",
+    "ownership": "Private (PRISA)",
+    "leaning": "left",
+    "title": "El diario ruso ‘Nóvaya Gazeta’ anuncia su cierre tras una “campaña coordinada” del Kremlin",
+    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxOQlY3RmphQkg5dExuVGJBNTVPNklXbllkNTQ4RmhJOGt2LUxLNEZlWG1qQlJ0ejNiNGpJYUtiQkx6SHZvQjRrN0pIcnJmZXN4OVF4MGhHdFdHMnhQM0trcy1pbHNKRUotNEQ4bzhpdnkxVWJaajZwZHVGbGQyU2I1dEZfR2ZEQ0RsTEZlVWh3Z0staVVldkt3QjI1Z0s3Y2huMEdqN3laM1BqcHJmODIzSHBlbklsc2lZUGRlSUE0REphTVZjbVNiOE15S1ZqUXNa0gHkAUFVX3lxTE15ekFKQVNFMGxXd3lJS3NDdFVsanFqblFBa1NHM1VoMjlmOXY5RW5Pc2lNdlNWb00yVmt0dUZKRi1uUzh0Vzc3QUh4NDhxZnlzRUVYVUpGRUFxWVlXMXJ4Zy1aNkVkMjdRbWpkaUdVcVFrOTJrYXF3bXBSMUJuYlkxRlFjTUlRdHlmYnZwNzlnQzFWaVRKMTAwVGhTb3EtNS1qN0U1am5ZS0hJcnhGYXV3MDBCQzRlMTJocWlFcmNXaEpIT1RtTVJYNU0wdlpZUnRYdVY1WjFPNWFfeGhaam9XbXM1OQ?oc=5",
+    "published": "2026-10-30T10:28:26+00:00",
+    "lang": "es",
+    "translation": "The Russian daily 'Novaya Gazeta' announces its closure after a \"coordinated campaign\" by the Kremlin"
+   },
+   {
+    "country": "ES",
+    "outlet": "Diari ARA",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "'Nóvaya Gazeta', el último diario opositor de Rusia, cierra por la presión del Kremlin: \"Nos han matado\"",
+    "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxOeVozMDlQb1Atb0VpSVJIX2pSRUp5dGhhcjFubVl2TDJCeTFzWjdScjd2NzcyVThHbHpNd1N2R2x3Rk1rSTNOZVJnSnZqS3RFMHlpYVNTNVNKYzZFNng0anBrd2w2NEQ2ZTk5b1JPQXJhNEVRRFFsUlJYMFMyTDgwdm5VeWJ3YzB4ZENNWWNKZFhiQUoxMmlCR3VJa1c4Y3dtZUpIb01KclMtNWFjZUx2VlVITm40ME9EUG9BVlp5OHpUR21ublB5alln?oc=5",
+    "published": "2026-10-30T08:45:18+00:00",
+    "lang": "es",
+    "translation": "'Nóvaya Gazeta', the last opposition daily in Russia, closes due to Kremlin pressure: \"They have killed us\""
+   },
+   {
+    "country": "ES",
+    "outlet": "Informat.ro",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Novaya Gazeta cesa sus actividades después de 30 años / Las presiones de las autoridades rusas obligaron al cierre de la publicación independiente",
+    "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxQOXZYanItMklPbk9Qd0phdGhuemJ2a19NX1pjQmROcWpDankwcFRycTZsS29oZVhkSFM1amhFMGZKb1FyM3hKOExYZjU0eEM4ZUVIRFQtT0g3aHFkNEJlUjlQMDduR1V5XzdTczRyaHJ5SlJjUEEtVkl2bldaNVc5bVZMRGxtNEFTbjlzZy1sbnVnOFVzT055SzRB?oc=5",
+    "published": "2026-10-30T09:39:17+00:00",
+    "lang": "es",
+    "translation": "Novaya Gazeta ceases its activities after 30 years / Russian authorities' pressure forced the closure of the independent publication"
+   },
+   {
+    "country": "US",
+    "outlet": "The Moscow Times",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Russia’s Oldest Independent Newspaper, Novaya Gazeta, Announces Closure",
+    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxNWWpMYVZqajdjdUpzRzA0cHgySUhaaXU5aWNKVHEzcW9YY0lTUGs0RU9aVTBxZWNPb2U2MHZmTFo5VFVxQ1JKdDhkeWg5ZHBZZy1pTHNFRXo1bEhVbmFaVE9VXzdySXBIRTNXTXdSZTRYVmhienN0dXFIaDRaQlJyRF9IbkRXbzBZcnI5TXgySXBzTC15Q09OZkpVY3JpVDk5c1dheFk0a1FmR2Y0MFp5X3JDWFg5Z1RF?oc=5",
+    "published": "2026-10-30T09:43:00+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "Novinite.com",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Novaya Gazeta, Symbol of Independent Russian Journalism, Forced to Close",
+    "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPdmV5Y29YdWFPVzBhQ3RPWU1XbEZ0aU0zdnVvOWdRY2hJOGRTMGI3dXRxVTQ1dXVLTzVwdnRGUmEtdG9GVllEc0RRV1JwWEFZOUdYdTFXRlVmUVZvY1VxUUtKOFVXSkdtWm9YT21wNnpvT19OaWxlUHFCX1dIRnRBR0llQXZlc1FtMEszbThHcG1NQXZneDU2bFMyZWpmVU5kLWRqbmZIQjVQLVhublZkZU9nblpfT1Js?oc=5",
+    "published": "2026-10-30T10:22:57+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "NewsCord",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Russian Authorities Force Novaya Gazeta To Shut Down, Editor Says It Is Ceasing To Exist: 10 outlets compared",
+    "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPX1h5QVlXejlpS0xSd016UExkbXBtdDlzdVpoaFpzSlhxVFdabkVQRE5HRlVJTHluNnRBcjRUU1hpZ2xvV0dNQ1h0Y1FLbWhsb3hwR0lEbmZBNXNvU0RkNlJ6WkllNWYzN3JvLVhtSFhSWkZYQkpyVWM5RTBQWkd3OFllcWFrOG9ubXNPSGZiNU1xeDFGVXhDNV9fUF9abGFfbURIYmFSd0hSNkk3eklwZkVSXzFGRGk1Vm44T2c1ZmRkYWN6QmtxS2FpM2ljak1pLWNTOWp3RTdWUUN5Y3ZlZXM5RWFDeERNTlE?oc=5",
+    "published": "2026-10-30T11:23:29+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "BNN Bloomberg",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Russian investigative newspaper Novaya Gazeta says it is shutting down after ‘co-ordinated campaign’",
+    "link": "https://news.google.com/rss/articles/CBMi8wFBVV95cUxPbTVyb09saDF3Z1VfeHVLZF9XY21URFhrWkZiNEkyLUx3d1YxYW9kMkc5Uzd6eUhvZnVFd2IxTENndk5lV0JreFB3RXlwZGN4ZVEzSUVLd2JUWFVyWnNCN2t6LUlYMkRfVzBueFNmc3F5djZXTnEzLVF6bWRTQ1JYWk53WUNOcWFmUTJCYW5wMkoySk1QcXZzajZoUF9XYWppOXB3ZnA5RU03VmtSeEdUa0c2SEROZDJEWnQybnVTMWJ6a09ESHcxclExN0pYSjJjdmwzeHFZUVJyZFRNUmpRVmhaYVBLUlNaT2swVHBRSl9kNnc?oc=5",
+    "published": "2026-10-30T11:32:20+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "US",
+    "outlet": "AzerNews",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Russia's Novaya Gazeta announces closure after 33 years, citing state pressure",
+    "link": "https://news.google.com/rss/articles/CBMiVEFVX3lxTFBvbmNOcE5tVndhX2VjMGVPWlUwUkVvZVZRWDBHRU0wQ3RQRDNNUHdmdDlRUF85cEtGb1JHaE9rWGRpM3VBSmowNkM1bE5kNFhZVngtVA?oc=5",
+    "published": "2026-10-30T12:45:00+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "The Economist",
+    "ownership": "Private",
+    "leaning": "center",
+    "title": "The Kremlin is shutting down Russia’s last free newspaper",
+    "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPZkY2OXNIQ1YtMC1tRFk1MUlIMVFLaGRIV3ZfWE1Zcnd2RE5hVk1yWS1qZTF1MHBoaUZzeVBDUWRHbmpfUkl6c2U1OUZuQjEyTnlpNFMxRngtSlV0NndZTlZCci01THpPNEF0bWJtbUI4SDhOTUdJN1BCNXExSXRkbkpPNTNxTnRkVm1iUUVzd1V6dVFoNS1MWDRDbnlCSjl0alE?oc=5",
+    "published": "2026-10-29T13:48:04+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "The Guardian",
+    "ownership": "Private, owned by the Scott Trust",
+    "leaning": "left",
+    "title": "Russian newspaper Novaya Gazeta to close, citing pressure from ‘special services’",
+    "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxNZXRtbFh1YlNHVkg5c3dCZDVtMnlyWF9kMmJkT1JqOEFIc3pJY1lRMDFoTG9Ld3ZLUjNHZ2lYZ1IxZllSVGUwN1kxVzdZLUN6WTc0T3F0bldJUDQ4UzNsTlZsdm1qV0FCQ3lGRzB0dE1ETHRoRmc2MHBxZ0kzTU5zbHBkNldLT0dxSHBlUHJNRGlzLW1pTVRhNU9pTTRHQQ?oc=5",
+    "published": "2026-10-30T09:05:00+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "Reuters",
+    "ownership": "Private news agency (Thomson Reuters)",
+    "leaning": "center",
+    "title": "Russian independent paper Novaya Gazeta finally forced to close its doors",
+    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPYzRudTRBQkxwUmlKUWdldzF3TllVcFZEZDR1bDdPZm1FUll0RTdnM2ZNeWZndUdtT1pnRGVmaDRZZmF6T05UNF9sdnpPQndNOGhnVVVicmNnZWg3QnpJajdJRlY5ZVA1eGJuY0dRdWo5WGdkZ19XcHRzYWNGYzd0WGVMcW1GQ2F3dGZXY2lPczhXT2liaXBHV3RESjlPanpNVFlQTUg2eC1rbGRuQUJ4WXp2a2EzbktCamo1WE4zXzk3dEwzV3Item5ZeEhXVjhL?oc=5",
+    "published": "2026-10-30T12:36:13+00:00",
+    "lang": "en-US",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "Mezha.net",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "Novaya Gazeta is being evicted in Moscow; the newsroom is closing Anna Politkovskaya’s museum",
+    "link": "https://news.google.com/rss/articles/CBMiakFVX3lxTE5NQlN5RkczWFh5SklyWE1aQUtzMkFueFJKZUY4S1g1Tmt6dU9LdGlNZUdCNTdIXy1nUzI1U0Z4dXBLOUxvOXNSVU1OZWVkS1gxTDlPcjc1UFR1eHEzeTBBbTNGd25uQkpwLWc?oc=5",
+    "published": "2026-10-29T20:00:16+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "GB",
+    "outlet": "Новая газета Европа",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "‘They killed us’: Novaya Gazeta announces closure after more than 30 years",
+    "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNMzF4TmN6OTdfQ2lJcTFidHdsbFFrYUxCSHZ6NmJCa2R4dUZMS2tzdjU5WlJrRDk2dlVEX25qRXhfTXEzRjdUWHhDdWZRMmxUT1c0SGJMVWR5RkpZOGtBeDNGbDZNUG5EX3dmX1VSdG9PWVdfTHlxS2hQaEwzcE1iRnBmajIxVTI5QXlRdDB5Q3dYSjN5MmFxdEw0VzdJZ2FDYU1kQWIyN0N2aG5YY0hyMS1zdWI2cWpvNFkzMXgwTTlHandz0gHKAUFVX3lxTFBQdE9ZencyZ1JlR0dwajI4bTBxM0dBRGZzaFg0eUIzMlRYR05FUXFvRkRuQ0lfTUtpakVRZGFIMDZnMlFua0YxaU9aYzFveThLRlZDUnNzQlNmN01jQ2hGQTZmR3pXT2tlLW45YVNPMnhCazdaakJMMHhaMU9RSWsxRmZmOThTSG5PRE9aUkE0akZBYmxjU2lCbGpNMlZWVTBTME5nbnhPV3NFNldrTEhob2U2TUJkUklodURtREYxWkR6cGZYV0pCY2c?oc=5",
+    "published": "2026-10-30T09:13:57+00:00",
+    "lang": "en-GB",
+    "translation": null
+   },
+   {
+    "country": "CN",
+    "outlet": "SWI swissinfo.ch",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "俄罗斯独立新闻堡垒「新报」宣布停刊",
+    "link": "https://news.google.com/rss/articles/CBMimwJBVV95cUxQQU9yWE1jT0ZrYUJCLWNGa1M5U2hqRHFQZVgtZFEyTTQzT3pzWVhJSmNkMnY0MWk3RDZFOVp6THlfX25fVGlObTM0T1dLNlAzQWZhUWdHMGZCTEZpdHJrS0ppVk9pX1BzdDlwamdUa280bGJTVUhDcWZ4WnpTM3AzVnNrUDhIUGViak01ZFpKblRoZmZuV3dZemhUazkzczFkeDQxNGctNEJGOEh6dzIzb1gwclVCQ2R1ZTBxYVo5ZXhYZm5NdjBPQzFDUXQzQWZhZ2paSkJuVEg1VnkzM2UxX085bFRuLUx5S1RGa2VxMFJBc3lzbi04YWl6aWl2MUExeVZneFVZZUNONmV3NE9QTjZBdV9ycVVMTjBJ?oc=5",
+    "published": "2026-10-30T09:35:01+00:00",
+    "lang": "zh-CN",
+    "translation": "Russia's independent news bastion \"Novaya Gazeta\" announces it is stopping publication"
+   },
+   {
+    "country": "CN",
+    "outlet": "Sin Chew Daily",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "不敌当局施压 俄罗斯独立新闻堡垒《新报》宣布停刊 - 国际 - 即时国际",
+    "link": "https://news.google.com/rss/articles/CBMib0FVX3lxTE9EN0tObTlwN0RudmxGRVpFY0x6MnJ0Q0NtWmZCRWVBMlJGclFaekNCaXRwam5lX2Ftd3ZMUGNpSzdWWjN5T1c3Z2kwZXBqRUhqRVRoZWZOT1ZzWFZPZFQzU2Flb0pYVFJ0WHJDZ2xCOA?oc=5",
+    "published": "2026-10-30T10:10:06+00:00",
+    "lang": "zh-CN",
+    "translation": "Unable to resist authorities' pressure, Russia's independent news bastion \"Novaya Gazeta\" announces it is stopping publication"
+   },
+   {
+    "country": "CN",
+    "outlet": "8world",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "俄罗斯独立报章《新报》宣布下个月停刊",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxPbWNyVUFOaVRsNFAtZ3ZJc2paWWx5aWY5S3BzMnZtcEg2T0F1NUYzd2lGNzY3dWF4M242MkVtVU5vUmtPVlVYSkdYZlIzTGN0bmxITVdqWlo5a00yODhlbnI3cTh3NmZRUF9seHBUV3VSWHVkaHZFNE9VTURiaVduTzdUTTkzS051TkhxdGlDSlhUa2psdWZieDh5eEZfUXJxdG9FSzUyc3dhdXM?oc=5",
+    "published": "2026-10-30T10:57:50+00:00",
+    "lang": "zh-CN",
+    "translation": "Russia's independent newspaper \"Novaya Gazeta\" announces it will stop publication next month"
+   },
+   {
+    "country": "AE",
+    "outlet": "Tunisie Telegraph",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "وثائق سرية تكشف خطة موسكو لإفريقيا.. الإعلام والموارد الطبيعية والأصوات داخل الأمم المتحدة",
+    "link": "https://news.google.com/rss/articles/CBMirANBVV95cUxQX2RFOE9FXzl5bS1SX1AtUUVkc1VPRjJMZnpBVDZCNEFjbDVRV0ZtcU81NGFtV1pMYVlUUGZWY2JiZXZBVi1xdGgwRndwaFdudFBhZTFXY2VLcHVUdDRneG4tMk1FRUsteGxocEpBcTY0UmVyR0hScHBDWjBWUy1UMGo2SzhFZWduMWJqaUVjZF9vU1k3bGRWVEZiUW95cFNTc0VVN0JPX2VNaW5qZ1JxeXJybFRxM2U3ZW04QUVmNG5nQll2MWpMRmRILTZEZzdsdmljRTZ2aldzT0hjdF93V1NVNFFlTW9fcHRyOTJqWnl1Nm1OTkg2NE00OGxhS1BKaDZhTkpYT09rNkhFQ09tei1hNGFJN25NMlYtNTFTeEU3ZWppSXV6WDZBc2c4U3dLcVpvcXdhVGpBckZiZlloYkVFSm5tV1hnbWZMMGRoaUpkZGtzWWdFOUpLcnFibDIyZGEzQWNMRHVURUJXZi1LZ1pvOUlUZ3dKNzFUOF9sN2JWSk50Tk53YWg5SmJ3RXBWYzM5c2xGWThFR0NXRWVwUmF5cjBXSFNPVGY3bw?oc=5",
+    "published": "2026-10-29T08:04:00+00:00",
+    "lang": "ar",
+    "translation": null
+   },
+   {
+    "country": "AE",
+    "outlet": "UA.NEWS",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "تنفق الشركات الروسية مليارات الروبلات للتصدي للطائرات المسيرة الأوكرانية",
+    "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNYXdlMkZ3WDY2c0FQeHZzeXg4UHNabS1IeVl2TFV2SzlqYmdVdk1wNDgtRmNDQjFOSzgzX09FR3BXQl9mbDEzQ1huUUhSTkNYS1Q5MEtPelBEdFA0dlBrd0Q5VzhiX0tIY2N2czdkYzNqTURSakphclowbk5Id3lYTWhjTHA5eER4TzQ2enREbVpRbUhxdWVsZzMzQUQ4ZEx4dzN2MXRiSWRuZVk?oc=5",
+    "published": "2026-10-29T15:11:03+00:00",
+    "lang": "ar",
+    "translation": null
+   },
+   {
+    "country": "AE",
+    "outlet": "رأي اليوم",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "صحيفة “نوفايا غازيتا” الروسية المستقلة تعلن إغلاقها تحت ضغط السلطات",
+    "link": "https://news.google.com/rss/articles/CBMixgJBVV95cUxNQ1p6WmRnUm5lRFFjQkk1ekpudlNTcXV3WUlOZndIZXBlZjdRUUphSURSM3pmblBJMzBGTzFud0Vjc0pLY3Nlb2EtUWlZeTczVDBpZkNGbjlyQlFrN0NYa09vY3lrRjdFVzZuNjVNeEQySVNtWld0VTFFeWhKaUR1Q2kweUY2dkRxZzBFaXlNWUJNLWxUQXZwUXlXTHVWaEJoMnBDajdMY2VLWG9jRkFGTjJtbjdQMTZvMmFkWUViQnlCMXoxVzlwLUZRUi1jNjh5ZWJRdW1oUEkyVEoxMTc4YTd1RHVYYmFEcnhXVjdOSnpJUXRzd3RxdGZldUplbmwtRHR3dFYyUC1mQ3FqeFVQSWZEeWpZWU1PNDFJZTdreFhHVHpYZU84a2llT0M5ck1yU3NEc1FtY2tFNUQ4Y2Fja0dfM1ZWZw?oc=5",
+    "published": "2026-10-30T10:48:22+00:00",
+    "lang": "ar",
+    "translation": "The independent Russian newspaper “Novaya Gazeta” announces its closure under pressure from the authorities"
+   },
+   {
+    "country": "AE",
+    "outlet": "شبكة تواصل الإخبارية",
+    "ownership": "Not profiled yet",
+    "leaning": null,
+    "title": "“قتلونا”.. صحيفة روسية مستقلة تغلق أبوابها بعد 33 عامًا",
+    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5BWTlHODlVSXNGalgwUVYyOHkwdDNwVkNFWWlxTk4yRlhNcjY5MllWb0wxNDN5Z1JwR25OUTJPa0Q1SFNTdW1yTjNCNzBPZmRMUlgw?oc=5",
+    "published": "2026-10-30T11:44:23+00:00",
+    "lang": "ar",
+    "translation": "“They killed us”.. an independent Russian newspaper closes its doors after 33 years"
+   }
+  ],
+  "common_ground": [
+   {
+    "fact": "The independent Russian newspaper Novaya Gazeta is closing.",
+    "sources": [
+     "RFI",
+     "Le Figaro",
+     "France 24",
+     "Libération",
+     "Cadena SER",
+     "La Vanguardia",
+     "El País",
+     "Diari ARA",
+     "Informat.ro",
+     "The Moscow Times",
+     "Novinite.com",
+     "NewsCord",
+     "BNN Bloomberg",
+     "AzerNews",
+     "The Economist",
+     "The Guardian",
+     "Reuters",
+     "Mezha.net",
+     "Новая газета Европа",
+     "SWI swissinfo.ch",
+     "Sin Chew Daily",
+     "8world",
+     "رأي اليوم",
+     "شبكة تواصل الإخبارية"
+    ]
+   },
+   {
+    "fact": "The closure is attributed to pressure from Russian authorities or the Kremlin.",
+    "sources": [
+     "RFI",
+     "Le Figaro",
+     "France 24",
+     "Libération",
+     "Cadena SER",
+     "La Vanguardia",
+     "El País",
+     "Diari ARA",
+     "Informat.ro",
+     "Novinite.com",
+     "NewsCord",
+     "BNN Bloomberg",
+     "AzerNews",
+     "The Economist",
+     "The Guardian",
+     "Reuters",
+     "SWI swissinfo.ch",
+     "Sin Chew Daily",
+     "رأي اليوم",
+     "شبكة تواصل الإخبارية"
+    ]
+   }
+  ],
+  "sides": {
+   "FR": {
+    "reading": "Focuses on the closure occurring under authority pressure and includes direct quotes.",
+    "loaded_words": [
+     "pression (pressure)",
+     "tués (killed)"
+    ],
+    "leaves_out": null
+   },
+   "ES": {
+    "reading": "Emphasizes political persecution and the outlet's role as a bastion of press freedom.",
+    "loaded_words": [
+     "persecución (persecution)",
+     "liquida (liquidates)",
+     "bastión (bastion)"
+    ],
+    "leaves_out": null
+   },
+   "US": {
+    "reading": "Highlights the paper's historical significance and symbolic status in journalism.",
+    "loaded_words": [
+     "Symbol (symbol)",
+     "Forced (forced)"
+    ],
+    "leaves_out": null
+   },
+   "GB": {
+    "reading": "Emphasizes the loss of press freedom and specifically mentions pressure from 'special services'.",
+    "loaded_words": [
+     "last free (last free)",
+     "forced (forced)"
+    ],
+    "leaves_out": null
+   },
+   "CN": {
+    "reading": "Describes the outlet as a bastion of news that is unable to resist pressure.",
+    "loaded_words": [
+     "堡垒 (bastion)",
+     "不敌 (unable to resist)"
+    ],
+    "leaves_out": null
+   },
+   "AE": {
+    "reading": "Reports the closure under pressure and uses the paper's quote 'They killed us'.",
+    "loaded_words": [
+     "ضغط (pressure)",
+     "قتلونا (they killed us)"
+    ],
+    "leaves_out": null
+   }
+  },
+  "claims": [
+   {
+    "claim": "Novaya Gazeta is closing its operations.",
+    "status": "confirmed",
+    "why": "All relevant outlets across all countries report the closure."
+   },
+   {
+    "claim": "The closure is caused by pressure from the Kremlin or Russian authorities.",
+    "status": "confirmed",
+    "why": "Most outlets in FR, ES, US, GB, CN, and AE include this cause."
+   },
+   {
+    "claim": "The newspaper has been operating for 30 to 33 years.",
+    "status": "confirmed",
+    "why": "US, GB, and AE outlets specify the duration of its activity."
+   },
+   {
+    "claim": "Novaya Gazeta is the last independent/free newspaper in Russia.",
+    "status": "single_source",
+    "why": "This specific characterization is used by FR, ES, GB, and CN outlets."
+   }
+  ],
+  "watch_out": [
+   "Two headlines under the AE index (23, 24) cover unrelated news topics.",
+   "The reported length of the paper's operation varies between 30 and 33 years."
+  ],
+  "divergence": 15,
+  "briefing": {
+   "en": "Russia's last independent newspaper, Novaya Gazeta, is closing due to pressure from Russian authorities. French media focuses on the pressure from authorities and includes direct quotes, while Spanish media emphasizes political persecution and the outlet's role as a bastion of press freedom. In the United States, reporting highlights the paper's historical significance and symbolic status. British media emphasizes the loss of press freedom and specifically mentions pressure from special services. China-based media describes the outlet as a bastion of news that is unable to resist pressure, while media in the UAE reports the closure under pressure, using the paper's quote, \"They killed us.\"",
+   "fr": "Le journal indépendant russe Novaya Gazeta a annoncé sa fermeture, une décision attribuée à des pressions du Kremlin. Les médias internationaux présentent l'événement différemment. Les médias français se concentrent sur la pression des autorités et incluent des citations directes. En Espagne, l'accent est mis sur la persécution politique et le rôle de bastion du journal pour la liberté de la presse. Aux États-Unis, on souligne l'importance historique et le statut symbolique du média. Au Royaume-Uni, la couverture évoque la perte de liberté de la presse et la pression des services spéciaux. Les médias chinois décrivent l'organe comme un bastion incapable de résister à la pression, tandis qu'aux Émirats arabes unis, on rapporte la fermeture sous pression en citant le journal qui affirme avoir été tué.",
+   "es": "El periódico independiente ruso Novaya Gazeta ha anunciado su cierre debido a la presión de las autoridades rusas. Los medios de España enfatizan la persecución política y su rol como bastión de la libertad de prensa, mientras que la prensa francesa se enfoca en la presión ejercida por las autoridades. Por su parte, los medios de Estados Unidos destacan su importancia histórica y estatus simbólico, y el Reino Unido subraya la pérdida de libertad de prensa ante la presión de los servicios especiales. Los medios de China describen al medio como un bastión incapaz de resistir la presión, y la prensa de los Emiratos Árabes Unidos reporta el cierre bajo presión citando la frase \"nos han matado\".",
+   "zh": "俄罗斯最后一本独立报纸《新报》宣布停刊。各国的媒体报道侧重点有所不同。中国媒体将其描述为无法抵御压力的新闻堡垒；法国媒体关注当局施加的压力并引用了相关言论；西班牙媒体强调政治迫害及该报作为新闻自由堡垒的角色；美国媒体则侧重其历史意义与象征地位；英国媒体强调新闻自由的丧失并特别提到来自特工部门的压力；而阿联酋媒体在报道压力导致停刊的同时，引用了该报“他们杀死了我们”的话语。"
+  }
+ }
+]

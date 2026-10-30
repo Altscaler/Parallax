@@ -1,0 +1,326 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Parallax</title>
+<link rel="icon" href="logo.svg">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --bg:#F4F2EC; --ink:#111; --muted:#6b6862; --line:#e4e1d8; --card:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; font-family:Inter, system-ui, sans-serif; background:var(--bg); color:var(--ink); display:flex; min-height:100vh; }
+  a { color:inherit; }
+  aside { width:248px; flex-shrink:0; background:#111; color:#fff; padding:24px 18px; display:flex; flex-direction:column; gap:24px; position:sticky; top:0; height:100vh; overflow-y:auto; }
+  .brand { display:flex; align-items:center; gap:10px; font-weight:600; font-size:22px; letter-spacing:-0.03em; cursor:pointer; }
+  .sec h4 { margin:0 0 10px; font-size:11px; font-weight:500; text-transform:uppercase; letter-spacing:.12em; color:#8a8780; }
+  .nav a { display:flex; justify-content:space-between; padding:8px 10px; border-radius:8px; color:#d8d6d0; text-decoration:none; font-size:14px; cursor:pointer; }
+  .nav a.on { background:#262626; color:#fff; }
+  .nav a span { color:#8a8780; font-size:12px; }
+  .chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .chip { font-size:12px; padding:5px 9px; border-radius:999px; border:1px solid #3a3a3a; color:#d8d6d0; cursor:pointer; user-select:none; background:none; font-family:inherit; }
+  .chip.on { background:#fff; color:#111; border-color:#fff; }
+  .seg { display:flex; border:1px solid #3a3a3a; border-radius:8px; overflow:hidden; }
+  .seg button { flex:1; text-align:center; font-size:12px; padding:6px 0; color:#d8d6d0; background:none; border:0; cursor:pointer; font-family:inherit; }
+  .seg button.on { background:#fff; color:#111; }
+  select.dark { width:100%; background:#1c1c1c; color:#fff; border:1px solid #3a3a3a; border-radius:8px; padding:7px; font:inherit; font-size:13px; }
+  .foot { margin-top:auto; font-size:12px; color:#8a8780; line-height:1.6; }
+  .foot a { color:#d8d6d0; cursor:pointer; }
+  main { flex:1; padding:28px 32px 48px; min-width:0; }
+  header.top { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:22px; gap:16px; flex-wrap:wrap; }
+  h1 { margin:0; font-size:26px; letter-spacing:-0.02em; line-height:1.25; }
+  .sub { color:var(--muted); font-size:14px; margin-top:4px; }
+  .search { background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px 14px; width:340px; max-width:100%; font:inherit; font-size:14px; }
+  .grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(290px,1fr)); gap:16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:18px; display:flex; flex-direction:column; gap:12px; cursor:pointer; transition:border-color .15s; }
+  .card:hover { border-color:#111; }
+  .tag { font-size:11px; color:var(--muted); text-transform:uppercase; letter-spacing:.1em; }
+  .card h3 { margin:0; font-size:17px; line-height:1.3; letter-spacing:-0.01em; }
+  .flags { display:flex; gap:6px; flex-wrap:wrap; }
+  .flags span { font-size:12px; background:var(--bg); border-radius:6px; padding:3px 7px; }
+  .meter { display:flex; align-items:center; gap:10px; font-size:12px; color:var(--muted); }
+  .bar { flex:1; height:6px; background:var(--bg); border-radius:3px; overflow:hidden; }
+  .bar i { display:block; height:100%; background:#111; }
+  .why { font-size:12px; color:var(--muted); }
+  .crumb { font-size:13px; color:var(--muted); cursor:pointer; }
+  .picker { display:flex; align-items:center; gap:10px; font-size:14px; flex-wrap:wrap; margin:16px 0; }
+  .picker select { background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 12px; font:inherit; font-weight:500; }
+  .box { background:#fff; border:1px solid var(--line); border-radius:14px; padding:18px 20px; margin-bottom:16px; }
+  .box h2 { margin:0 0 12px; font-size:12px; text-transform:uppercase; letter-spacing:.1em; color:var(--muted); font-weight:500; }
+  .box ul { margin:0; padding-left:20px; }
+  .box li { margin:6px 0; font-size:15px; line-height:1.45; }
+  small, .src { color:var(--muted); font-size:12px; }
+  .cols { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px; }
+  .cols .box { margin:0; }
+  .side h3 { margin:0 0 12px; font-size:18px; }
+  .hl { border-left:3px solid #111; padding:2px 0 2px 12px; margin:0 0 12px; }
+  .hl .o { font-size:15px; font-weight:500; line-height:1.4; }
+  .hl .o a { text-decoration:none; }
+  .hl .o a:hover { text-decoration:underline; }
+  .hl .t { font-size:13px; color:var(--muted); margin-top:3px; }
+  .hl .s { font-size:12px; color:var(--muted); margin-top:3px; }
+  .lean { display:inline-block; font-size:11px; border:1px solid var(--line); border-radius:4px; padding:0 5px; margin-left:4px; }
+  .read { margin-top:14px; padding-top:12px; border-top:1px solid var(--line); font-size:14px; line-height:1.5; }
+  .words { display:flex; gap:6px; flex-wrap:wrap; margin-top:8px; }
+  .words span { font-size:12px; background:var(--bg); border-radius:6px; padding:3px 8px; }
+  .gemma { background:#111; color:#fff; border-color:#111; }
+  .gemma h2 { color:#8a8780; }
+  .gemma p { margin:0 0 14px; font-size:15px; line-height:1.6; max-width:900px; white-space:pre-wrap; }
+  .gemma .rtl { direction:rtl; text-align:right; }
+  .listen { display:flex; gap:6px; flex-wrap:wrap; align-items:center; }
+  .listen button { font:inherit; font-size:12px; padding:6px 11px; border-radius:999px; border:1px solid #3a3a3a; background:none; color:#fff; cursor:pointer; }
+  .listen button.on { background:#fff; color:#111; }
+  .listen .note { font-size:12px; color:#8a8780; margin-left:6px; }
+  .claim { display:flex; gap:12px; align-items:flex-start; padding:10px 0; border-top:1px solid var(--line); }
+  .claim:first-of-type { border-top:0; }
+  .st { flex-shrink:0; font-size:11px; font-weight:600; padding:3px 9px; border-radius:999px; white-space:nowrap; }
+  .confirmed { background:#dcefdc; } .contested { background:#f6d9d3; } .single_source { background:#f3e6b8; } .no_coverage { background:#e4e2dc; }
+  .claim .c { font-size:15px; } .claim .w { font-size:13px; color:var(--muted); margin-top:2px; }
+  .cov { display:flex; flex-direction:column; gap:6px; }
+  .cov div { display:flex; align-items:center; gap:10px; font-size:13px; }
+  .cov b { width:150px; font-weight:500; }
+  .cov .bar { max-width:360px; }
+  textarea, input.txt { width:100%; font:inherit; font-size:15px; padding:12px 14px; border:1px solid var(--line); border-radius:10px; background:#fff; }
+  textarea { min-height:130px; resize:vertical; }
+  .btn { background:#111; color:#fff; border:0; border-radius:10px; padding:11px 18px; font:inherit; font-weight:500; cursor:pointer; }
+  .btn:disabled { opacity:.5; cursor:wait; }
+  .row { display:flex; gap:10px; margin:10px 0; align-items:center; flex-wrap:wrap; }
+  .row select { background:#fff; border:1px solid var(--line); border-radius:10px; padding:10px; font:inherit; }
+  .muted { color:var(--muted); }
+  .prose p { font-size:15px; line-height:1.6; max-width:760px; }
+  .save { background:none; border:1px solid var(--line); border-radius:8px; padding:6px 10px; font:inherit; font-size:13px; cursor:pointer; }
+  .empty { color:var(--muted); font-size:14px; padding:20px 0; }
+  @media (max-width:860px){ body{flex-direction:column;} aside{width:auto; height:auto; position:static;} main{padding:20px 16px;} .cols{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<aside>
+  <div class="brand" data-go="home">
+    <svg width="26" height="28" viewBox="0 0 40 44"><rect x="6" y="0" width="10" height="36" rx="2" fill="#fff"/><rect x="24" y="8" width="10" height="36" rx="2" fill="#fff" opacity=".5"/></svg>
+    Parallax
+  </div>
+  <div class="sec nav" id="nav">
+    <a data-go="home">This week's stories <span id="nStories"></span></a>
+    <a data-go="check">Check a claim</a>
+    <a data-go="saved">Saved <span id="nSaved"></span></a>
+    <a data-go="method">How we stay neutral</a>
+  </div>
+  <div class="sec"><h4>Countries</h4><div class="chips" id="fCountries"></div></div>
+  <div class="sec"><h4>Political camp</h4><div class="seg" id="fCamp">
+    <button data-v="left">Left</button><button data-v="all" class="on">All</button><button data-v="right">Right</button></div></div>
+  <div class="sec"><h4>Topics</h4><div class="chips" id="fTopics"></div></div>
+  <div class="sec"><h4>Listen in</h4><div class="chips" id="fLang"></div></div>
+  <div class="sec"><h4>Voice</h4>
+    <select class="dark" id="fVoice">
+      <option value="browser">Built-in voice (free, offline)</option>
+      <option value="piper">Piper (open source, local)</option>
+      <option value="elevenlabs">ElevenLabs (optional key)</option>
+    </select></div>
+  <div class="foot"><span id="meta"></span><br>Explained by Gemma 4 (26B)<br>Grouped by EmbeddingGemma</div>
+</aside>
+<main id="main"></main>
+
+<script>
+const FLAG = { FR:"🇫🇷", ES:"🇪🇸", US:"🇺🇸", GB:"🇬🇧", CN:"🇨🇳", AE:"🇦🇪", QA:"🇶🇦", SA:"🇸🇦", DE:"🇩🇪", SG:"🇸🇬", RU:"🇷🇺", IN:"🇮🇳", INT:"🌐" };
+const CNAME = { FR:"France", ES:"Spain", US:"USA", GB:"UK", CN:"China-based media", AE:"UAE", QA:"Qatar", SA:"Saudi Arabia", DE:"Germany", SG:"Singapore", RU:"Russia", IN:"India", INT:"International" };
+const LANGS = [["ar","العربية"],["zh","中文"],["en","English"],["fr","Français"],["es","Español"]];
+const SPEECH = { en:"en-US", fr:"fr-FR", es:"es-ES", zh:"zh-CN", ar:"ar-SA" };
+const STATUS = { confirmed:"Confirmed", contested:"Contested", single_source:"Single source", no_coverage:"No coverage found" };
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;" }[c]));
+const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? d; } catch { return d; } },
+                set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
+
+let STORIES = [];
+const state = { countries: new Set(), camp: "all", topic: "All", lang: store.get("lang", "en"), voice: store.get("voice", "browser"),
+                saved: new Set(store.get("saved", [])), view: "home", story: null, a: null, b: null, q: "" };
+
+function chips(el, items, isOn, onClick) {
+  el.innerHTML = items.map(([v, label]) => `<button class="chip ${isOn(v) ? "on" : ""}" data-v="${esc(v)}">${label}</button>`).join("");
+  el.querySelectorAll("button").forEach(b => b.onclick = () => onClick(b.dataset.v));
+}
+
+function renderSidebar() {
+  const allC = [...new Set(STORIES.flatMap(s => s.countries))];
+  chips(fCountries, allC.map(c => [c, `${FLAG[c] || ""} ${esc(CNAME[c] || c)}`]), c => state.countries.has(c),
+    c => { state.countries.has(c) ? state.countries.delete(c) : state.countries.add(c); render(); });
+  const topics = ["All", ...new Set(STORIES.map(s => s.topic))];
+  chips(fTopics, topics.map(t => [t, esc(t)]), t => state.topic === t, t => { state.topic = t; render(); });
+  chips(fLang, LANGS, l => state.lang === l, l => { state.lang = l; store.set("lang", l); render(); });
+  fCamp.querySelectorAll("button").forEach(b => { b.classList.toggle("on", b.dataset.v === state.camp); b.onclick = () => { state.camp = b.dataset.v; render(); }; });
+  fVoice.value = state.voice; fVoice.onchange = () => { state.voice = fVoice.value; store.set("voice", state.voice); };
+  document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.go === state.view || (state.view === "story" && a.dataset.go === "home")));
+  nStories.textContent = STORIES.length; nSaved.textContent = state.saved.size || "";
+}
+
+function visibleStories(list) {
+  return list.filter(s => (state.topic === "All" || s.topic === state.topic)
+    && [...state.countries].every(c => s.countries.includes(c))
+    && (!state.q || (s.title + " " + s.headlines.map(h => h.title + " " + (h.translation || "")).join(" ")).toLowerCase().includes(state.q.toLowerCase())));
+}
+
+function whyLine(s) {
+  const n = s.countries.length;
+  return `Covered in ${Object.keys(s.by_country).length} countries by ${s.n_outlets} outlets${s.wires.length ? ", including " + s.wires.join(", ") : ""}`;
+}
+
+function cardHTML(s) {
+  const d = s.divergence ?? 50, lvl = d >= 70 ? "high" : d >= 40 ? "medium" : "low";
+  return `<div class="card" data-id="${s.id}">
+    <span class="tag">${esc(s.topic)} · ${s.countries.length} countries</span>
+    <h3>${esc(s.title)}</h3>
+    <div class="flags">${s.countries.map(c => `<span>${FLAG[c] || c} ${s.by_country[c] || ""}</span>`).join("")}</div>
+    <div class="meter">Told differently <div class="bar"><i style="width:${d}%"></i></div> ${lvl}</div>
+    <div class="why">${esc(whyLine(s))}</div>
+  </div>`;
+}
+
+function home(list, title, sub) {
+  const vis = visibleStories(list);
+  main.innerHTML = `<header class="top"><div><h1>${title}</h1><div class="sub">${sub}</div></div>
+    <input class="search" id="q" placeholder="Search a story" value="${esc(state.q)}"></header>
+    <div class="grid">${vis.map(cardHTML).join("") || `<div class="empty">No story matches these filters.</div>`}</div>`;
+  q.oninput = () => { state.q = q.value; const pos = q.selectionStart; render(); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(pos, pos); };
+  main.querySelectorAll(".card").forEach(c => c.onclick = () => open(c.dataset.id));
+}
+
+function open(id) {
+  const s = STORIES.find(x => x.id === id);
+  state.view = "story"; state.story = id;
+  const pref = [...state.countries].filter(c => s.countries.includes(c));
+  state.a = pref[0] || s.countries[0]; state.b = pref[1] || (s.countries.includes("CN") && state.a !== "CN" ? "CN" : s.countries.find(c => c !== state.a));
+  render(); window.scrollTo(0, 0);
+}
+
+function headlinesFor(s, c) {
+  return s.headlines.filter(h => h.country === c && (state.camp === "all" || h.leaning === state.camp || (state.camp !== "all" && !h.leaning && false)));
+}
+
+function sideHTML(s, c) {
+  const side = (s.sides || {})[c] || {};
+  const hs = headlinesFor(s, c);
+  const campNote = state.camp !== "all" && !hs.length ? `<div class="empty">No ${state.camp}-leaning outlet rated for this country. Ratings exist mainly for the US, UK, France and Spain.</div>` : "";
+  return `<div class="box side"><h3>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</h3>${campNote}
+    ${hs.map(h => `<div class="hl"><div class="o"><a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.title)}</a></div>
+      ${h.translation && h.lang !== "en-US" && h.lang !== "en-GB" ? `<div class="t">${esc(h.translation)}</div>` : ""}
+      <div class="s">${esc(h.outlet)}${h.leaning ? `<span class="lean">${esc(h.leaning)}</span>` : ""} · ${esc(h.ownership)}</div></div>`).join("")}
+    <div class="read"><b>Gemma's reading:</b> ${esc(side.reading || "No reading for this side.")}
+      ${side.leaves_out ? `<div class="muted" style="margin-top:6px">Leaves out: ${esc(side.leaves_out)}</div>` : ""}
+      <div class="words">${(side.loaded_words || []).map(w => `<span>${esc(w)}</span>`).join("")}</div></div></div>`;
+}
+
+function story() {
+  const s = STORIES.find(x => x.id === state.story);
+  const opts = sel => s.countries.map(c => `<option value="${c}" ${c === sel ? "selected" : ""}>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</option>`).join("");
+  const brief = (s.briefing || {})[state.lang] || (s.briefing || {}).en || "";
+  const maxC = Math.max(...Object.values(s.by_country));
+  main.innerHTML = `
+    <div class="crumb" data-go="home">This week's stories › ${esc(s.topic)} · ${s.countries.length} countries · ${s.headlines.length} headlines compared</div>
+    <div style="display:flex;justify-content:space-between;gap:16px;align-items:flex-start;margin-top:4px">
+      <h1>${esc(s.title)}</h1>
+      <button class="save" id="saveBtn">${state.saved.has(s.id) ? "Saved ✓" : "Save"}</button></div>
+    <div class="why" style="margin-top:6px">${esc(whyLine(s))}</div>
+    <div class="picker">Compare <select id="selA">${opts(state.a)}</select> with <select id="selB">${opts(state.b)}</select></div>
+
+    <div class="box"><h2>What everyone agrees on</h2><ul>
+      ${(s.common_ground || []).map(f => `<li>${esc(f.fact)} <small>${esc((f.sources || []).join(", "))}</small></li>`).join("")}</ul></div>
+
+    <div class="cols">${sideHTML(s, state.a)}${sideHTML(s, state.b)}</div>
+
+    <div class="box gemma"><h2>Gemma explains the whole story</h2>
+      <p class="${state.lang === "ar" ? "rtl" : ""}" lang="${state.lang}">${esc(brief)}</p>
+      <div class="listen">${LANGS.filter(([l]) => (s.briefing || {})[l]).map(([l, n]) => `<button data-l="${l}" class="${l === state.lang ? "on" : ""}">▶ ${n}</button>`).join("")}
+        <button data-stop="1">■ Stop</button><span class="note" id="voiceNote"></span></div></div>
+
+    <div class="box"><h2>Fact-check of the main claims</h2>
+      ${(s.claims || []).map(c => `<div class="claim"><span class="st ${esc(c.status)}">${esc(STATUS[c.status] || c.status)}</span>
+        <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div></div></div>`).join("") || `<div class="empty">No claims extracted.</div>`}
+      <div class="src" style="margin-top:10px">Judged from headlines across ${s.n_outlets} outlets. "Single source" means nobody else repeats it yet, which proves nothing on its own.</div></div>
+
+    <div class="box"><h2>Watch out</h2><ul>${(s.watch_out || []).map(w => `<li>${esc(w)}</li>`).join("")}</ul></div>
+
+    <div class="box"><h2>Who covered it</h2><div class="cov">
+      ${Object.entries(s.by_country).sort((a, b) => b[1] - a[1]).map(([c, n]) => `<div><b>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</b><div class="bar"><i style="width:${n / maxC * 100}%"></i></div>${n}</div>`).join("")}
+    </div><div class="src" style="margin-top:10px">Outlets are placed in their country of origin. Google News's China edition mostly shows Western outlets writing in Chinese (BBC, VOA, RFI): we count those under their own country.</div></div>`;
+  selA.onchange = () => { state.a = selA.value; render(); };
+  selB.onchange = () => { state.b = selB.value; render(); };
+  saveBtn.onclick = () => { state.saved.has(s.id) ? state.saved.delete(s.id) : state.saved.add(s.id); store.set("saved", [...state.saved]); render(); };
+  main.querySelectorAll(".listen button[data-l]").forEach(b => b.onclick = () => { state.lang = b.dataset.l; store.set("lang", state.lang); render(); speak(s.briefing[state.lang], state.lang); });
+  main.querySelector("[data-stop]").onclick = stopSpeech;
+}
+
+let audio;
+function stopSpeech() { speechSynthesis.cancel(); if (audio) audio.pause(); }
+async function speak(text, lang) {
+  stopSpeech();
+  const note = document.getElementById("voiceNote");
+  if (state.voice !== "browser") {
+    try {
+      note.textContent = "Generating voice…";
+      const r = await fetch("/api/tts", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ text, lang, engine: state.voice }) });
+      if (!r.ok) throw new Error((await r.json()).error || r.status);
+      audio = new Audio(URL.createObjectURL(await r.blob())); audio.play(); note.textContent = ""; return;
+    } catch (e) { note.textContent = `${state.voice} unavailable (${e.message}), using the built-in voice`; }
+  }
+  const u = new SpeechSynthesisUtterance(text); u.lang = SPEECH[lang]; u.rate = 1;
+  const v = speechSynthesis.getVoices().find(v => v.lang.replace("_", "-").startsWith(SPEECH[lang].slice(0, 2)));
+  if (v) u.voice = v;
+  speechSynthesis.speak(u);
+}
+
+function check() {
+  main.innerHTML = `<h1>Check a claim</h1>
+    <div class="sub">Paste a claim, an article, a WhatsApp message, or an Instagram post link. Gemma pulls the claims and looks for them in other outlets in the US, UK, France and the UAE.</div>
+    <div style="max-width:820px;margin-top:18px">
+      <textarea id="ctext" placeholder="Paste text here"></textarea>
+      <div class="row"><input class="txt" id="curl" placeholder="…or an Instagram post link (optional, uses Apify)" style="flex:1"></div>
+      <div class="row"><button class="btn" id="cgo">Check</button><span class="muted" id="cstat"></span></div>
+      <div id="cout"></div>
+      <div class="src" style="margin-top:24px">Reading a news site? The Parallax Chrome extension runs the same check on the page you are reading. See the <code>extension</code> folder.</div>
+    </div>`;
+  cgo.onclick = async () => {
+    cgo.disabled = true; cout.innerHTML = ""; cstat.textContent = "Checking, this takes about a minute…";
+    try {
+      const r = await fetch("/api/check", { method:"POST", headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ text: ctext.value, instagram: curl.value.trim(), lang: LANGS.find(([l]) => l === state.lang)[1] }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || r.status);
+      cout.innerHTML = `${d.source ? `<div class="box"><h2>Source</h2>${esc(d.source)}</div>` : ""}
+        <div class="box"><h2>Summary</h2><p style="margin:0;line-height:1.55">${esc(d.summary)}</p></div>
+        <div class="box"><h2>Claims</h2>${(d.claims || []).map(c => `<div class="claim"><span class="st ${esc(c.status)}">${esc(STATUS[c.status] || c.status)}</span>
+          <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div></div></div>`).join("")}</div>`;
+      cstat.textContent = "";
+    } catch (e) { cstat.textContent = "Failed: " + e.message + ". This needs the local server (python3 server.py)."; }
+    cgo.disabled = false;
+  };
+}
+
+function method() {
+  main.innerHTML = `<h1>How we stay neutral</h1><div class="prose">
+    <p><b>Which stories.</b> Every few hours we read this week's headlines from the Google News editions of France, Spain, the US, the UK, China and the UAE. EmbeddingGemma groups headlines about the same event across languages. A story is shown only if outlets from at least 3 countries cover it, and stories are ranked by how many countries and outlets cover them, whether a news agency (Reuters, AP, AFP) does, and how recent they are. Each card says why it is there.</p>
+    <p><b>Where an outlet comes from.</b> An outlet counts for its own country, whatever edition it appears in. BBC Chinese counts as UK, Global Times as China.</p>
+    <p><b>Who owns it.</b> Every outlet gets the same fields: owner or funder, and whether a government funds it. Left, centre or right appears only where a public rating exists (AllSides, Media Bias Fact Check), which is mostly the US, UK, France and Spain. We never label an outlet reliable or unreliable.</p>
+    <p><b>What Gemma does.</b> Gemma 4 reads the headlines and writes what most countries agree on, what each side emphasises or leaves out, and which claims are confirmed, contested or come from a single source. It is told never to say who is right. It only sees headlines, so treat its reading as a starting point.</p>
+    <p><b>Limits.</b> Headlines, not full articles. Some countries have few outlets in Google News. Gemma's model has its own blind spots. A claim with no coverage is not false, it is only unconfirmed.</p></div>`;
+}
+
+function render() {
+  renderSidebar();
+  if (state.view === "story") story();
+  else if (state.view === "check") check();
+  else if (state.view === "method") method();
+  else if (state.view === "saved") home(STORIES.filter(s => state.saved.has(s.id)), "Saved stories", "Stories you saved on this device");
+  else home(STORIES, "This week", "Stories covered in at least 3 countries, ranked by how differently they are told");
+  document.querySelectorAll("[data-go]").forEach(el => el.onclick = () => { state.view = el.dataset.go; render(); window.scrollTo(0, 0); });
+}
+
+fetch("data/stories.json").then(r => r.json()).then(d => {
+  STORIES = d.sort((a, b) => (b.divergence ?? 0) - (a.divergence ?? 0));
+  meta.textContent = `${new Set(d.flatMap(s => s.headlines.map(h => h.outlet))).size} outlets compared`;
+  speechSynthesis.getVoices();
+  const h = location.hash.slice(1);
+  if (STORIES.some(s => s.id === h)) open(h);
+  else { if (["check", "method", "saved"].includes(h)) state.view = h; render(); }
+});
+</script>
+</body>
+</html>
