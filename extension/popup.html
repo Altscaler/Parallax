@@ -1,0 +1,36 @@
+<!doctype html>
+<meta charset="utf-8">
+<style>
+  body { width: 380px; margin: 0; padding: 16px; font: 14px/1.45 -apple-system, system-ui, sans-serif; background: #F4F2EC; color: #111; }
+  h1 { font-size: 16px; margin: 0 0 12px; display: flex; gap: 8px; align-items: center; }
+  .mark { width: 22px; height: 22px; background: #111; border-radius: 5px; position: relative; }
+  .mark i { position: absolute; top: 5px; width: 4px; height: 12px; background: #fff; border-radius: 1px; }
+  .mark i + i { opacity: .55; top: 7px; }
+  .row { display: flex; gap: 8px; margin-bottom: 10px; }
+  select, input, button { font: inherit; padding: 7px 9px; border: 1px solid #c9c5ba; border-radius: 6px; background: #fff; }
+  input { flex: 1; min-width: 0; }
+  button { background: #111; color: #fff; border-color: #111; cursor: pointer; width: 100%; }
+  button:disabled { opacity: .5; cursor: wait; }
+  #status { color: #666; margin: 10px 0; }
+  .claim { background: #fff; border: 1px solid #e0dccf; border-radius: 8px; padding: 10px; margin-top: 8px; }
+  .tag { display: inline-block; font-size: 12px; font-weight: 600; padding: 1px 8px; border-radius: 10px; margin-bottom: 4px; }
+  .confirmed { background: #dcefdc; } .contested { background: #f6d9d3; }
+  .single_source { background: #f3e6b8; } .no_coverage { background: #e4e2dc; }
+  .why { color: #444; font-size: 13px; margin-top: 4px; }
+  .note { margin: 10px 0; padding: 10px; border-left: 3px solid #111; background: #fff; font-size: 13px; }
+  .rtl { direction: rtl; text-align: right; }
+</style>
+<h1><span class="mark"><i style="left:6px"></i><i style="left:12px"></i></span>Angles</h1>
+<div class="row">
+  <select id="lang">
+    <option value="English">English</option><option value="Arabic">العربية</option>
+    <option value="French">Français</option><option value="Spanish">Español</option>
+    <option value="Chinese">中文</option>
+  </select>
+  <input id="key" type="password" placeholder="Gemini API key (saved locally)">
+</div>
+<button id="go">Check this story</button>
+<div id="status"></div>
+<div id="out"></div>
+<script src="analyze.js"></script>
+<script src="popup.js"></script>

@@ -1,0 +1,12 @@
+{
+  "manifest_version": 3,
+  "name": "Angles: check the source",
+  "version": "0.1.0",
+  "description": "On a news page, checks the outlet and the main claims against what other outlets report.",
+  "permissions": ["activeTab", "scripting", "storage"],
+  "host_permissions": [
+    "https://generativelanguage.googleapis.com/*",
+    "https://news.google.com/*"
+  ],
+  "action": { "default_popup": "popup.html", "default_title": "Check this story" }
+}
