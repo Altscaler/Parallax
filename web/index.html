@@ -23,6 +23,7 @@
   .seg { display:flex; border:1px solid #3a3a3a; border-radius:8px; overflow:hidden; }
   .seg button { flex:1; text-align:center; font-size:12px; padding:6px 0; color:#d8d6d0; background:none; border:0; cursor:pointer; font-family:inherit; }
   .seg button.on { background:#fff; color:#111; }
+  .picker .seg button.on { background:#111; color:#fff !important; }
   select.dark { width:100%; background:#1c1c1c; color:#fff; border:1px solid #3a3a3a; border-radius:8px; padding:7px; font:inherit; font-size:13px; }
   .foot { margin-top:auto; font-size:12px; color:#8a8780; line-height:1.6; }
   .foot a { color:#d8d6d0; cursor:pointer; }
@@ -126,7 +127,7 @@ const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? 
 
 let STORIES = [];
 const state = { countries: new Set(), camp: "all", topic: "All", lang: store.get("lang", "en"), voice: "elevenlabs",
-                saved: new Set(store.get("saved", [])), view: "home", story: null, a: null, b: null, q: "" };
+                saved: new Set(store.get("saved", [])), view: "home", story: null, a: null, b: null, c: null, mode: "country", q: "" };
 
 function chips(el, items, isOn, onClick) {
   el.innerHTML = items.map(([v, label]) => `<button class="chip ${isOn(v) ? "on" : ""}" data-v="${esc(v)}">${label}</button>`).join("");
@@ -188,14 +189,34 @@ function headlinesFor(s, c) {
   return s.headlines.filter(h => h.country === c && (state.camp === "all" || h.leaning === state.camp || (state.camp !== "all" && !h.leaning && false)));
 }
 
+function campCols(s, c) {
+  const have = ["left", "center", "right"].filter(k => s.headlines.some(h => h.country === c && h.leaning === k));
+  return have.length === 2 ? have : have.includes("left") && have.includes("right") ? ["left", "right"] : [];
+}
+
+function campHTML(s, c, k) {
+  const hs = s.headlines.filter(h => h.country === c && h.leaning === k);
+  return `<div class="box side"><h3>${FLAG[c] || ""} ${esc(CNAME[c] || c)}: ${k}-leaning outlets</h3>${hs.map(h => `<div class="hl"><div class="o"><a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.title)}</a></div>
+      ${h.translation && h.lang !== "en-US" && h.lang !== "en-GB" ? `<div class="t">${esc(h.translation)}</div>` : ""}
+      <div class="s">${esc(h.outlet)}</div></div>`).join("")}</div>`;
+}
+
+function campView(s) {
+  const [x, y] = campCols(s, state.c), side = (s.sides || {})[state.c] || {};
+  return `<div class="cols">${campHTML(s, state.c, x)}${campHTML(s, state.c, y)}</div>
+    <div class="box"><h2>Gemma's reading of ${esc(CNAME[state.c] || state.c)} overall</h2>${esc(side.reading || "")}
+      <div class="src" style="margin-top:8px">Gemma reads each country as a whole, not each camp. Camps come from public ratings (AllSides, Media Bias Fact Check) and only appear where an outlet is rated.</div></div>`;
+}
+
 function sideHTML(s, c) {
   const side = (s.sides || {})[c] || {};
   const hs = headlinesFor(s, c);
   const campNote = state.camp !== "all" && !hs.length ? `<div class="empty">No ${state.camp}-leaning outlet rated for this country. Ratings exist mainly for the US, UK, France and Spain.</div>` : "";
   return `<div class="box side"><h3>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</h3>${campNote}
-    ${hs.map(h => `<div class="hl"><div class="o"><a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.title)}</a></div>
+    ${hs.map((h, n) => `<div class="hl" ${n >= 3 ? 'data-more hidden' : ""}><div class="o"><a href="${esc(h.link)}" target="_blank" rel="noopener">${esc(h.title)}</a></div>
       ${h.translation && h.lang !== "en-US" && h.lang !== "en-GB" ? `<div class="t">${esc(h.translation)}</div>` : ""}
-      <div class="s">${esc(h.outlet)}${h.leaning ? `<span class="lean">${esc(h.leaning)}</span>` : ""} · ${esc(h.ownership)}</div></div>`).join("")}
+      <div class="s">${esc(h.outlet)}${h.leaning ? `<span class="lean">${esc(h.leaning)}</span>` : ""}${h.ownership && h.ownership !== "Not profiled yet" ? ` · ${esc(h.ownership)}` : ""}</div></div>`).join("")}
+    ${hs.length > 3 ? `<button class="save" data-showmore>Show ${hs.length - 3} more headlines</button>` : ""}
     <div class="read"><b>Gemma's reading:</b> ${esc(side.reading || "No reading for this side.")}
       ${side.leaves_out ? `<div class="muted" style="margin-top:6px">Leaves out: ${esc(side.leaves_out)}</div>` : ""}
       <div class="words">${(side.loaded_words || []).map(w => `<span>${esc(w)}</span>`).join("")}</div></div></div>`;
@@ -205,6 +226,9 @@ function story() {
   const s = STORIES.find(x => x.id === state.story);
   const opts = sel => s.countries.map(c => `<option value="${c}" ${c === sel ? "selected" : ""}>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</option>`).join("");
   const brief = (s.briefing || {})[state.lang] || (s.briefing || {}).en || "";
+  const campC = s.countries.filter(c => campCols(s, c).length);
+  if (state.mode === "camp" && !campC.length) state.mode = "country";
+  if (!campC.includes(state.c)) state.c = campC[0];
   const maxC = Math.max(...Object.values(s.by_country));
   main.innerHTML = `
     <div class="crumb" data-go="home">This week's stories › ${esc(s.topic)} · ${s.countries.length} countries · ${s.headlines.length} headlines compared</div>
@@ -212,12 +236,15 @@ function story() {
       <h1>${esc(s.title)}</h1>
       <button class="save" id="saveBtn">${state.saved.has(s.id) ? "Saved ✓" : "Save"}</button></div>
     <div class="why" style="margin-top:6px">${esc(whyLine(s))}</div>
-    <div class="picker">Compare <select id="selA">${opts(state.a)}</select> with <select id="selB">${opts(state.b)}</select></div>
+    <div class="picker"><div class="seg" id="modeSeg" style="width:270px;border-color:var(--line)"><button style="color:var(--ink)" data-m="country" class="${state.mode === "country" ? "on" : ""}">Country vs country</button><button style="color:var(--ink)" data-m="camp" class="${state.mode === "camp" ? "on" : ""}">Left vs right</button></div>
+      ${state.mode === "camp"
+        ? `Inside <select id="selC">${campC.map(c => `<option value="${c}" ${c === state.c ? "selected" : ""}>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</option>`).join("")}</select>`
+        : `Compare <select id="selA">${opts(state.a)}</select> with <select id="selB">${opts(state.b)}</select>`}</div>
 
     <div class="box"><h2>What everyone agrees on</h2><ul>
-      ${(s.common_ground || []).map(f => `<li>${esc(f.fact)} <small>${esc((f.sources || []).join(", "))}</small></li>`).join("")}</ul></div>
+      ${(s.common_ground || []).map(f => { const src = f.sources || []; return `<li>${esc(f.fact)} <small>${esc(src.slice(0, 4).join(", "))}${src.length > 4 ? ` +${src.length - 4} more` : ""}</small></li>`; }).join("")}</ul></div>
 
-    <div class="cols">${sideHTML(s, state.a)}${sideHTML(s, state.b)}</div>
+    ${state.mode === "camp" ? campView(s) : `<div class="cols">${sideHTML(s, state.a)}${sideHTML(s, state.b)}</div>`}
 
     <div class="box gemma"><h2>Gemma explains the whole story</h2>
       <p class="${state.lang === "ar" ? "rtl" : ""}" lang="${state.lang}">${esc(brief)}</p>
@@ -234,8 +261,12 @@ function story() {
     <div class="box"><h2>Who covered it</h2><div class="cov">
       ${Object.entries(s.by_country).sort((a, b) => b[1] - a[1]).map(([c, n]) => `<div><b>${FLAG[c] || ""} ${esc(CNAME[c] || c)}</b><div class="bar"><i style="width:${n / maxC * 100}%"></i></div>${n}</div>`).join("")}
     </div><div class="src" style="margin-top:10px">Outlets are placed in their country of origin. Google News's China edition mostly shows Western outlets writing in Chinese (BBC, VOA, RFI): we count those under their own country.</div></div>`;
-  selA.onchange = () => { state.a = selA.value; render(); };
-  selB.onchange = () => { state.b = selB.value; render(); };
+  main.querySelectorAll("[data-showmore]").forEach(b => b.onclick = () => {
+    b.closest(".side").querySelectorAll("[data-more]").forEach(x => x.hidden = false); b.remove(); });
+  modeSeg.querySelectorAll("button").forEach(b => b.onclick = () => { if (b.dataset.m === "camp" && !campC.length) return alert("No country has outlets rated on two sides for this story."); state.mode = b.dataset.m; render(); });
+  if (window.selC) selC.onchange = () => { state.c = selC.value; render(); };
+  if (window.selA) selA.onchange = () => { if (selA.value === state.b) state.b = state.a; state.a = selA.value; render(); };
+  if (window.selB) selB.onchange = () => { if (selB.value === state.a) state.a = state.b; state.b = selB.value; render(); };
   saveBtn.onclick = () => { state.saved.has(s.id) ? state.saved.delete(s.id) : state.saved.add(s.id); store.set("saved", [...state.saved]); render(); };
   main.querySelectorAll(".listen button[data-l]").forEach(b => b.onclick = () => { state.lang = b.dataset.l; store.set("lang", state.lang); render(); speak(s.briefing[state.lang], state.lang); });
   main.querySelector("[data-stop]").onclick = stopSpeech;
