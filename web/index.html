@@ -166,10 +166,10 @@ function whyLine(s) {
 function cardHTML(s) {
   const d = s.divergence ?? 50, lvl = d >= 70 ? "high" : d >= 40 ? "medium" : "low";
   return `<div class="card" data-id="${s.id}">
-    <span class="tag">${esc(s.topic)} · ${s.countries.length} countries</span>
+    <span class="tag">${esc(s.topic)} · ${s.countries.length} countries compared</span>
     <h3>${esc(s.title)}</h3>
     <div class="flags">${s.countries.map(c => `<span>${FLAG[c] || c} ${s.by_country[c] || ""}</span>`).join("")}</div>
-    <div class="meter">Told differently <div class="bar"><i style="width:${d}%"></i></div> ${lvl}</div>
+    <div class="meter" title="Gemma's estimate, 0 to 100, of how differently the countries tell the story">Told differently <div class="bar"><i style="width:${d}%"></i></div> ${lvl}</div>
     <div class="why">${esc(whyLine(s))}</div>
   </div>`;
 }
@@ -274,6 +274,7 @@ function check() {
       <textarea id="ctext" placeholder="Paste text here"></textarea>
       <div class="row"><input class="txt" id="curl" placeholder="…or an Instagram post link (optional, uses Apify)" style="flex:1"></div>
       <div class="row"><button class="btn" id="cgo">Check</button><span class="muted" id="cstat"></span></div>
+      ${location.hostname === "localhost" || location.hostname === "127.0.0.1" ? "" : `<div class="box" style="margin-top:10px">The live check calls Gemma for about a minute, so it runs in the local version (<code>python3 server.py</code>) and in the Chrome extension. On this hosted demo it may not answer.</div>`}
       <div id="cout"></div>
       <div class="src" style="margin-top:24px">Reading a news site? The Parallax Chrome extension runs the same check on the page you are reading. See the <code>extension</code> folder.</div>
     </div>`;
