@@ -1,7 +1,9 @@
 import json, os, re, time, urllib.request, urllib.error
-for line in open(os.path.join(os.path.dirname(__file__), "..", ".env")):
-    if "=" in line:
-        k, v = line.strip().split("=", 1); os.environ.setdefault(k, v)
+ENV = os.path.join(os.path.dirname(__file__), "..", ".env")
+if os.path.exists(ENV):  # on Render the keys come from environment variables instead
+    for line in open(ENV):
+        if "=" in line:
+            k, v = line.strip().split("=", 1); os.environ.setdefault(k, v)
 
 MODEL = "gemma-4-26b-a4b-it"
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"

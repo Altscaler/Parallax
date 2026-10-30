@@ -52,5 +52,6 @@ class H(SimpleHTTPRequestHandler):
             self.reply(500, {"error": str(e)})
 
 if __name__ == "__main__":
-    print("Parallax on http://localhost:8000")
-    ThreadingHTTPServer(("", 8000), H).serve_forever()
+    port = int(os.environ.get("PORT", 8000))
+    print(f"Parallax on http://localhost:{port}")
+    ThreadingHTTPServer(("0.0.0.0", port), H).serve_forever()

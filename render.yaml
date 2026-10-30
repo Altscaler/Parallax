@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: parallax
+    runtime: python
+    plan: free
+    buildCommand: "echo no build needed"
+    startCommand: "python3 server.py"
+    envVars:
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: APIFY_TOKEN
+        sync: false
+      - key: ELEVENLABS_API_KEY
+        sync: false
