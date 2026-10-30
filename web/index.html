@@ -43,6 +43,8 @@
   .bar { flex:1; height:6px; background:var(--bg); border-radius:3px; overflow:hidden; }
   .bar i { display:block; height:100%; background:#111; }
   .why { font-size:12px; color:var(--muted); }
+  .cardfoot { display:flex; justify-content:space-between; align-items:center; gap:10px; font-size:13px; color:var(--muted); margin-top:auto; }
+  .cardfoot .fl { font-size:16px; letter-spacing:2px; }
   .crumb { font-size:13px; color:var(--muted); cursor:pointer; }
   .picker { display:flex; align-items:center; gap:10px; font-size:14px; flex-wrap:wrap; margin:16px 0; }
   .picker select { background:#fff; border:1px solid var(--line); border-radius:10px; padding:8px 12px; font:inherit; font-weight:500; }
@@ -158,13 +160,12 @@ function whyLine(s) {
 }
 
 function cardHTML(s) {
-  const d = s.divergence ?? 50, lvl = d >= 70 ? "high" : d >= 40 ? "medium" : "low";
+  const d = s.divergence ?? 50, lvl = d >= 70 ? "Told very differently" : d >= 40 ? "Told differently" : "Told much the same";
   return `<div class="card" data-id="${s.id}">
-    <span class="tag">${esc(s.topic)} · ${s.countries.length} countries compared</span>
+    <span class="tag">${esc(s.topic)}</span>
     <h3>${esc(s.title)}</h3>
-    <div class="flags">${s.countries.map(c => `<span>${FLAG[c] || c} ${s.by_country[c] || ""}</span>`).join("")}</div>
-    <div class="meter" title="Gemma's estimate, 0 to 100, of how differently the countries tell the story">Told differently <div class="bar"><i style="width:${d}%"></i></div> ${lvl}</div>
-    <div class="why">${esc(whyLine(s))}</div>
+    <div class="cardfoot" title="Gemma's estimate of how differently the countries tell the story">
+      <span class="fl">${s.countries.map(c => FLAG[c] || c).join(" ")}</span><span>${lvl}</span></div>
   </div>`;
 }
 
@@ -300,6 +301,11 @@ async function speak(text, lang) {
   }
 }
 
+function srcLinks(c) {
+  const row = (label, xs) => xs && xs.length ? `<div class="w" style="margin-top:4px"><b>${label}:</b> ${xs.map(x => `<a href="${esc(x.link)}" target="_blank" rel="noopener">${esc(x.outlet)}</a>`).join(" · ")}</div>` : "";
+  return row("Published fact-checks", c.fact_checks) + row("Wire agencies", c.wires);
+}
+
 function check() {
   main.innerHTML = `<h1>Check a claim</h1>
     <div class="sub">Paste a claim, an article, a WhatsApp message, or an Instagram post link. Gemma pulls the claims and looks for them in other outlets in the US, UK, France and the UAE.</div>
@@ -321,7 +327,7 @@ function check() {
       cout.innerHTML = `${d.source ? `<div class="box"><h2>Source</h2>${esc(d.source)}</div>` : ""}
         <div class="box"><h2>Summary</h2><p style="margin:0;line-height:1.55">${esc(d.summary)}</p></div>
         <div class="box"><h2>Claims</h2>${(d.claims || []).map(c => `<div class="claim"><span class="st ${esc(c.status)}">${esc(STATUS[c.status] || c.status)}</span>
-          <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div></div></div>`).join("")}</div>`;
+          <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div>${srcLinks(c)}</div></div>`).join("")}</div>`;
       cstat.textContent = "";
     } catch (e) { cstat.textContent = "Failed: " + e.message + ". This needs the local server (python3 server.py)."; }
     cgo.disabled = false;

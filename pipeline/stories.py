@@ -32,9 +32,9 @@ def fetch(url):
     with urllib.request.urlopen(req, timeout=20) as r:
         return r.read()
 
-def search(query, edition):
+def search(query, edition, when="7d"):
     hl, gl, ceid = EDITIONS[edition]
-    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + " when:7d", "hl": hl, "gl": gl, "ceid": ceid})
+    url = "https://news.google.com/rss/search?" + urllib.parse.urlencode({"q": query + f" when:{when}", "hl": hl, "gl": gl, "ceid": ceid})
     out = []
     for it in ET.fromstring(fetch(url)).iter("item"):
         src = it.find("source")
