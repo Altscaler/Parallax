@@ -9,7 +9,7 @@ MODEL = "gemma-4-26b-a4b-it"
 URL = f"https://generativelanguage.googleapis.com/v1beta/models/{MODEL}:generateContent"
 
 def ask(prompt, retries=4):
-    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}]}).encode()
+    body = json.dumps({"contents": [{"parts": [{"text": prompt}]}], "generationConfig": {"thinkingConfig": {"thinkingLevel": "minimal"}}}).encode()
     for n in range(retries):
         req = urllib.request.Request(URL, body, {"Content-Type": "application/json",
                                                  "x-goog-api-key": os.environ["GEMINI_API_KEY"]})

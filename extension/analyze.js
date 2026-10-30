@@ -10,7 +10,8 @@ async function ask(key, prompt) {
       r = await fetch(GEMMA, {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-goog-api-key": key },
-        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] }),
+        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { thinkingConfig: { thinkingLevel: "minimal" } } }),
+        signal: AbortSignal.timeout(25000),
       });
     } catch (e) {  // Gemma's API sometimes drops the connection; retry like a 500
       await new Promise(res => setTimeout(res, 2000 * (n + 1)));
@@ -47,15 +48,16 @@ function parseRss(xml) {
 
 async function corroborate(query, pageHost) {
   const seen = new Map();
-  for (const [hl, gl, ceid] of EDITIONS) {
+  // all editions at once, each capped at 6 s
+  const lists = await Promise.all(EDITIONS.map(async ([hl, gl, ceid]) => {
     try {
-      const r = await fetch(`https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=${hl}&gl=${gl}&ceid=${ceid}`);
-      if (!r.ok) continue;
-      for (const it of parseRss(await r.text()).slice(0, 8)) {
-        if (it.domain && pageHost.endsWith(it.domain)) continue;
-        if (!seen.has(it.outlet)) seen.set(it.outlet, { ...it, edition: gl });
-      }
-    } catch (e) { /* edition unavailable, skip */ }
+      const r = await fetch(`https://news.google.com/rss/search?q=${encodeURIComponent(query)}&hl=${hl}&gl=${gl}&ceid=${ceid}`, { signal: AbortSignal.timeout(6000) });
+      return r.ok ? parseRss(await r.text()).slice(0, 8).map(it => ({ ...it, edition: gl })) : [];
+    } catch (e) { return []; }
+  }));
+  for (const it of lists.flat()) {
+    if (it.domain && pageHost.endsWith(it.domain)) continue;
+    if (!seen.has(it.outlet)) seen.set(it.outlet, it);
   }
   return [...seen.values()].slice(0, 12);
 }
@@ -73,43 +75,31 @@ async function deepEvidence(query, host) {
 
 async function analyze(key, page, lang, onStatus = () => {}) {
   const host = new URL(page.url).hostname.replace(/^www\./, "");
-  onStatus("Reading the article");
-  const ex = await askJson(key, `You read a news article. Reply with JSON only:
-{"outlet":"name of the outlet","story":"the story in 8 words or fewer, in English",
- "claims":[{"claim":"one checkable statement (number, quote, cause or event), in English","search":"3-6 word English search query to find other coverage","cited_source":"who the article says it comes from, or null"}]}
-Give at most 4 claims, the ones the story rests on.
-
-TITLE: ${page.title}
-URL: ${page.url}
-TEXT:
-${page.text}`);
+  const headline = (page.title || page.text.slice(0, 100)).replace(/\s+[-|–]\s+[^-|–]+$/, "").slice(0, 120);
   onStatus("Looking for other coverage");
-  const claims = ex.claims.slice(0, 4);
-  const deep = await Promise.all(claims.map(c => deepEvidence(c.search, host)));
-  const found = await Promise.all(claims.map((c, i) => deep[i] ? deep[i] : corroborate(c.search, host)));
-  const evidence = claims.map((c, i) => ({ claim: c.claim, cited_source: c.cited_source,
-    other_coverage: found[i].map(f => `${f.outlet} (${f.edition}): ${f.title}` + (f.excerpt ? `\n   text: ${f.excerpt}` : "")) }));
-  onStatus("Comparing");
-  const out = await askJson(key, `You compare a news article with headlines from other outlets, found on Google News.
-Judge each claim ONLY from the headlines and article text given (quote the outlet when you rely on its text). Never say who is lying. Never call an outlet reliable or unreliable.
-Status per claim, one of:
-- "confirmed": reported by several independent outlets, or by a wire agency (Reuters, AP, AFP)
-- "contested": other outlets report something different
-- "single_source": only this article, or everyone repeats one origin
-- "no_coverage": nothing found in the headlines, which proves nothing
+  const words = headline.replace(/["'«»“”‘’:]/g, " ").split(/\s+/).filter(Boolean);
+  let found = await corroborate(words.slice(0, 9).join(" "), host);
+  if (found.length < 4) found = found.concat(await corroborate(words.slice(0, 4).join(" "), host));
+  const coverage = [...new Map(found.map(f => [f.outlet, f])).values()].slice(0, 15).map(f => `${f.outlet} (${f.edition}): ${f.title}`);
+  onStatus("Checking the claims");
+  const out = await askJson(key, `You fact-check a news article against headlines from other outlets found on Google News.
+Pick the 3 or 4 checkable claims the article rests on (numbers, quotes, causes, events) and judge each ONLY from the headlines given.
+Never say who is lying. Never call an outlet reliable or unreliable.
+Status per claim: "confirmed" (several independent outlets or a wire agency such as Reuters, AP, AFP), "contested" (others report something different), "single_source" (only this article, or everyone repeats one origin), "no_coverage" (nothing found, which proves nothing).
+accuracy = 0-100 estimate of how well the claims are backed: mostly confirmed scores high, contested pulls it down most, single_source and no_coverage sit in the middle.
 Reply with JSON only, all text in ${lang}:
-{"summary":"2 sentences: what the article says and how solid it looks",
- "accuracy": 0,
- "accuracy_why":"one sentence explaining the accuracy estimate",
- "outlet_note":"what is publicly known about ${ex.outlet || host}: owner, state funding, country. Say 'not sure' if unsure.",
+{"outlet":"name of the outlet","story":"the story in 8 words or fewer",
+ "summary":"2 sentences: what the article says and how solid it looks",
+ "accuracy":0,"accuracy_why":"one sentence",
+ "outlet_note":"what is publicly known about the outlet: owner, state funding, country. Say 'not sure' if unsure.",
  "claims":[{"claim":"...","status":"...","why":"one sentence naming the outlets that support or differ"}]}
 
-accuracy = 0-100 estimate of how well the article's claims are backed by other coverage: mostly confirmed claims score high, contested claims pull it down most, single_source and no_coverage sit in the middle.
+ARTICLE (${host}): ${page.title}
+${page.text.slice(0, 5000)}
 
-OUTLET: ${ex.outlet || host} (${host})
-EVIDENCE:
-${JSON.stringify(evidence, null, 1)}`);
-  out.outlet = ex.outlet || host; out.story = ex.story; out.evidence = evidence;
+OTHER COVERAGE:
+${coverage.join("\n") || "(none found)"}`);
+  out.outlet = out.outlet || host; out.evidence = coverage;
   return out;
 }
 
@@ -121,7 +111,7 @@ async function summarize(key, page, lang, onStatus = () => {}) {
 TITLE: ${page.title}
 URL: ${page.url}
 TEXT:
-${page.text}`);
+${page.text.slice(0, 5000)}`);
 }
 
 if (typeof module !== "undefined") module.exports = { analyze, summarize };
