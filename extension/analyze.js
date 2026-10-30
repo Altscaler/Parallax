@@ -99,8 +99,12 @@ Status per claim, one of:
 - "no_coverage": nothing found in the headlines, which proves nothing
 Reply with JSON only, all text in ${lang}:
 {"summary":"2 sentences: what the article says and how solid it looks",
+ "accuracy": 0,
+ "accuracy_why":"one sentence explaining the accuracy estimate",
  "outlet_note":"what is publicly known about ${ex.outlet || host}: owner, state funding, country. Say 'not sure' if unsure.",
  "claims":[{"claim":"...","status":"...","why":"one sentence naming the outlets that support or differ"}]}
+
+accuracy = 0-100 estimate of how well the article's claims are backed by other coverage: mostly confirmed claims score high, contested claims pull it down most, single_source and no_coverage sit in the middle.
 
 OUTLET: ${ex.outlet || host} (${host})
 EVIDENCE:
@@ -109,5 +113,16 @@ ${JSON.stringify(evidence, null, 1)}`);
   return out;
 }
 
-if (typeof module !== "undefined") module.exports = { analyze };
+async function summarize(key, page, lang, onStatus = () => {}) {
+  onStatus("Summarizing");
+  return askJson(key, `Summarize this news article for a reader, in ${lang}. Neutral tone, no opinion. Reply with JSON only:
+{"outlet":"name of the outlet","title":"the headline translated into ${lang}","summary":"3 to 4 sentences in ${lang}","key_points":["3 short points in ${lang}"]}
+
+TITLE: ${page.title}
+URL: ${page.url}
+TEXT:
+${page.text}`);
+}
+
+if (typeof module !== "undefined") module.exports = { analyze, summarize };
 function setServer(url) { if (url) SERVER = url.replace(/\/$/, ""); }

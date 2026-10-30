@@ -19,20 +19,30 @@
   .why { color: #444; font-size: 13px; margin-top: 4px; }
   .note { margin: 10px 0; padding: 10px; border-left: 3px solid #111; background: #fff; font-size: 13px; }
   .rtl { direction: rtl; text-align: right; }
+  .lbl { font-size: 12px; color: #666; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 6px; }
+  .langs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 12px; }
+  .langs button { width: auto; flex: 1; background: #fff; color: #111; border-color: #c9c5ba; padding: 6px 8px; }
+  .langs button:hover { border-color: #111; }
+  .main { padding: 10px; font-weight: 600; }
+  .score { display: flex; align-items: center; gap: 10px; margin: 10px 0 4px; font-weight: 600; }
+  .bar { flex: 1; height: 8px; background: #e4e1d8; border-radius: 4px; overflow: hidden; }
+  .bar i { display: block; height: 100%; background: #111; }
+  .saved { font-size: 13px; color: #2d6a2d; margin-top: 12px; }
+  .saved a { color: inherit; }
+  ul { padding-left: 18px; margin: 8px 0; }
 </style>
 <h1><img src="icons/48.png" width="22" height="22" alt="">Parallax</h1>
-<div class="row" style="align-items:center">
-  <select id="lang">
-    <option value="English">English</option><option value="Arabic">العربية</option>
-    <option value="French">Français</option><option value="Spanish">Español</option>
-    <option value="Chinese">中文</option>
-  </select>
-  <button id="again" style="width:auto;flex:1">Check again</button>
+<div class="lbl">Summarize this article in</div>
+<div class="langs" id="langs">
+  <button data-l="English">English</button><button data-l="Arabic">العربية</button><button data-l="Chinese">中文</button>
+  <button data-l="French">Français</button><button data-l="Spanish">Español</button>
 </div>
-<details id="settings" style="margin-bottom:10px;font-size:13px"><summary style="cursor:pointer;color:#666">Settings</summary>
+<button id="check" class="main">Fact-check this article</button>
+<details id="settings" style="margin:10px 0;font-size:13px"><summary style="cursor:pointer;color:#666">Settings</summary>
   <div class="row" style="margin-top:8px"><input id="key" type="password" placeholder="Gemini API key (saved locally)"></div>
+  <div class="row"><input id="dash" placeholder="Parallax dashboard URL"></div>
   <div class="row"><input id="server" placeholder="Evidence server URL (optional)"></div>
-  <button id="go">Save and check</button>
+  <button id="saveSettings">Save settings</button>
 </details>
 <div id="status"></div>
 <div id="out"></div>

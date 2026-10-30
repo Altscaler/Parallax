@@ -149,7 +149,7 @@ function renderSidebar() {
   fCamp.querySelectorAll("button").forEach(b => { b.classList.toggle("on", b.dataset.v === state.camp); b.onclick = () => { state.camp = b.dataset.v; render(); }; });
   fVoice.value = state.voice; fVoice.onchange = () => { state.voice = fVoice.value; store.set("voice", state.voice); };
   document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.go === state.view || (state.view === "story" && a.dataset.go === "home")));
-  nStories.textContent = STORIES.length; nSaved.textContent = state.saved.size || "";
+  nStories.textContent = STORIES.length; nSaved.textContent = (state.saved.size + store.get("articles", []).length) || "";
 }
 
 function visibleStories(list) {
@@ -304,12 +304,44 @@ function method() {
     <p><b>Limits.</b> Headlines, not full articles. Some countries have few outlets in Google News. Gemma's model has its own blind spots. A claim with no coverage is not false, it is only unconfirmed.</p></div>`;
 }
 
+function articleHTML(a, i) {
+  const date = new Date(a.saved_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
+  const rtl = a.lang === "Arabic" ? ' style="direction:rtl;text-align:right"' : "";
+  const head = `<span class="tag">${a.type === "factcheck" ? "Fact-check" : "Summary"} · ${esc(a.lang)} · ${esc(a.outlet || "")} · ${esc(date)}</span>
+    <h3><a href="${esc(a.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(a.title || a.page_title)}</a></h3>`;
+  const body = a.type === "factcheck"
+    ? `<div class="meter">Accuracy estimate <div class="bar"><i style="width:${a.accuracy}%"></i></div> ${a.accuracy}/100</div>
+       <div class="why">${esc(a.accuracy_why)}</div>
+       <details><summary class="why" style="cursor:pointer">${a.claims.length} claims checked</summary>
+       ${a.claims.map(c => `<div class="claim"><span class="st ${esc(c.status)}">${esc(STATUS[c.status] || c.status)}</span>
+         <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div></div></div>`).join("")}
+       <div class="w" style="margin-top:6px">${esc(a.outlet_note)}</div></details>`
+    : `<div${rtl}><p style="margin:0;font-size:14px;line-height:1.5">${esc(a.summary)}</p>
+       <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">${(a.key_points || []).map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>`;
+  return `<div class="card" style="cursor:default">${head}${body}
+    <div><button class="save" data-del="${i}">Remove</button></div></div>`;
+}
+
+function saved() {
+  const arts = store.get("articles", []);
+  const stories = STORIES.filter(s => state.saved.has(s.id));
+  main.innerHTML = `<header class="top"><div><h1>Saved</h1>
+      <div class="sub">Articles you summarized or fact-checked with the Parallax extension, and stories you saved here. Kept in this browser.</div></div></header>
+    <h2 class="tag" style="margin:0 0 12px">From the extension (${arts.length})</h2>
+    <div class="grid">${arts.map(articleHTML).join("") || `<div class="empty">Nothing yet. Open a news article, click the Parallax icon, then Summarize or Fact-check.</div>`}</div>
+    <h2 class="tag" style="margin:28px 0 12px">Saved stories (${stories.length})</h2>
+    <div class="grid">${stories.map(cardHTML).join("") || `<div class="empty">Open a story and click Save.</div>`}</div>`;
+  main.querySelectorAll(".card[data-id]").forEach(c => c.onclick = () => open(c.dataset.id));
+  main.querySelectorAll("[data-del]").forEach(b => b.onclick = () => {
+    const a = store.get("articles", []); a.splice(+b.dataset.del, 1); store.set("articles", a); render(); });
+}
+
 function render() {
   renderSidebar();
   if (state.view === "story") story();
   else if (state.view === "check") check();
   else if (state.view === "method") method();
-  else if (state.view === "saved") home(STORIES.filter(s => state.saved.has(s.id)), "Saved stories", "Stories you saved on this device");
+  else if (state.view === "saved") saved();
   else home(STORIES, "This week", "Stories covered in at least 3 countries, ranked by how differently they are told");
   document.querySelectorAll("[data-go]").forEach(el => el.onclick = () => { state.view = el.dataset.go; render(); window.scrollTo(0, 0); });
 }
@@ -318,7 +350,15 @@ fetch("data/stories.json").then(r => r.json()).then(d => {
   STORIES = d.sort((a, b) => (b.divergence ?? 0) - (a.divergence ?? 0));
   meta.textContent = `${new Set(d.flatMap(s => s.headlines.map(h => h.outlet))).size} outlets compared`;
   speechSynthesis.getVoices();
-  const h = location.hash.slice(1);
+  let h = location.hash.slice(1);
+  if (h.startsWith("save=")) {
+    try {
+      const item = JSON.parse(decodeURIComponent(escape(atob(h.slice(5)))));
+      const arts = store.get("articles", []).filter(a => !(a.url === item.url && a.type === item.type && a.lang === item.lang));
+      store.set("articles", [item, ...arts]);
+    } catch (e) { console.error("import failed", e); }
+    history.replaceState(null, "", "#saved"); h = "saved";
+  }
   if (STORIES.some(s => s.id === h)) open(h);
   else { if (["check", "method", "saved"].includes(h)) state.view = h; render(); }
 });
