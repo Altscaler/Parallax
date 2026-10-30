@@ -408,7 +408,7 @@ function method() {
 function articleHTML(a, i) {
   const date = new Date(a.saved_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
   const rtl = a.lang === "Arabic" ? ' style="direction:rtl;text-align:right"' : "";
-  const head = `<span class="tag">${a.type === "factcheck" ? "Fact-check" : "Summary"} · ${esc(a.lang)} · ${esc(a.outlet || "")} · ${esc(date)}</span>
+  const head = `<span class="tag">${a.type === "factcheck" ? "Fact-check" : a.type === "compare" ? "Compared across countries" : "Summary"} · ${esc(a.lang)} · ${esc(a.outlet || "")} · ${esc(date)}</span>
     <h3><a href="${esc(a.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(a.title || a.page_title)}</a></h3>`;
   const body = a.type === "factcheck"
     ? `<div class="meter">Accuracy estimate <div class="bar"><i style="width:${a.accuracy}%"></i></div> ${a.accuracy}/100</div>

@@ -103,6 +103,43 @@ ${coverage.join("\n") || "(none found)"}`);
   return out;
 }
 
+const WORLD = [["en-US", "US", "US:en", "USA"], ["en-GB", "GB", "GB:en", "UK"], ["fr", "FR", "FR:fr", "France"],
+               ["es", "ES", "ES:es", "Spain"], ["zh-CN", "CN", "CN:zh-Hans", "China"], ["ar", "AE", "AE:ar", "UAE"]];
+
+async function compareCountries(key, page, lang, onStatus = () => {}) {
+  const host = new URL(page.url).hostname.replace(/^www\./, "");
+  onStatus("Translating the story");
+  const q = await askJson(key, `Give a 3-6 word news search query for this story in each language. Reply with JSON only:
+{"en":"...","fr":"...","es":"...","zh":"...","ar":"..."}
+STORY: ${page.title}
+${page.text.slice(0, 600)}`);
+  const qFor = { "en-US": q.en, "en-GB": q.en, fr: q.fr, es: q.es, "zh-CN": q.zh, ar: q.ar };
+  onStatus("Searching 6 countries");
+  const per = await Promise.all(WORLD.map(async ([hl, gl, ceid, name]) => {
+    try {
+      const r = await fetch(`https://news.google.com/rss/search?q=${encodeURIComponent((qFor[hl] || q.en) + " when:7d")}&hl=${hl}&gl=${gl}&ceid=${ceid}`, { signal: AbortSignal.timeout(6000) });
+      const items = r.ok ? parseRss(await r.text()).filter(it => !(it.domain && host.endsWith(it.domain))).slice(0, 5) : [];
+      return { name, items };
+    } catch (e) { return { name, items: [] }; }
+  }));
+  onStatus("Comparing the countries");
+  const out = await askJson(key, `Compare how media in different countries cover one story, from the headlines below, and how the article the reader is on tells it.
+Never say who is right. Never call an outlet reliable or unreliable. If a country has no headlines, say "no coverage found".
+Reply with JSON only, all text in ${lang}:
+{"story":"the story in one short sentence",
+ "countries":[{"country":"name","angle":"one sentence: what its media put first","outlets":["up to 3 outlet names"]}],
+ "this_article":"one sentence: how this article's angle compares",
+ "difference":"one sentence: the biggest difference between countries"}
+
+THE ARTICLE (${host}): ${page.title}
+${page.text.slice(0, 2500)}
+
+HEADLINES BY COUNTRY:
+${per.map(p => `${p.name}:\n` + (p.items.map(i => `  ${i.outlet}: ${i.title}`).join("\n") || "  (none)")).join("\n")}`);
+  out.outlet = host;
+  return out;
+}
+
 async function summarize(key, page, lang, onStatus = () => {}) {
   onStatus("Summarizing");
   return askJson(key, `Summarize this news article for a reader, in ${lang}. Neutral tone, no opinion. Reply with JSON only:
@@ -114,5 +151,5 @@ TEXT:
 ${page.text.slice(0, 5000)}`);
 }
 
-if (typeof module !== "undefined") module.exports = { analyze, summarize };
+if (typeof module !== "undefined") module.exports = { analyze, summarize, compareCountries };
 function setServer(url) { if (url) SERVER = url.replace(/\/$/, ""); }
