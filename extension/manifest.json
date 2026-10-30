@@ -1,12 +1,31 @@
 {
   "manifest_version": 3,
-  "name": "Angles: check the source",
+  "name": "Parallax: check the source",
   "version": "0.1.0",
   "description": "On a news page, checks the outlet and the main claims against what other outlets report.",
-  "permissions": ["activeTab", "scripting", "storage"],
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage"
+  ],
   "host_permissions": [
     "https://generativelanguage.googleapis.com/*",
     "https://news.google.com/*"
   ],
-  "action": { "default_popup": "popup.html", "default_title": "Check this story" }
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Check this story",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
 }
