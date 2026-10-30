@@ -8,7 +8,7 @@ sys.path.insert(0, os.path.join(ROOT, "pipeline"))
 import gemma  # loads .env
 from check import check
 
-ELEVEN_VOICE = "21m00Tcm4TlvDq8ikWAM"  # a default multilingual voice
+ELEVEN_VOICE = "JBFqnCBsd6RMkjVDRZzb"  # "George" - premade voice (library voices need a paid plan)
 PIPER = {"en": "en_US-lessac-medium", "fr": "fr_FR-siwis-medium", "es": "es_ES-davefx-medium",
          "zh": "zh_CN-huayan-medium", "ar": "ar_JO-kareem-medium"}
 

@@ -110,13 +110,7 @@
     <button data-v="left">Left</button><button data-v="all" class="on">All</button><button data-v="right">Right</button></div></div>
   <div class="sec"><h4>Topics</h4><div class="chips" id="fTopics"></div></div>
   <div class="sec"><h4>Listen in</h4><div class="chips" id="fLang"></div></div>
-  <div class="sec"><h4>Voice</h4>
-    <select class="dark" id="fVoice">
-      <option value="browser">Built-in voice (free, offline)</option>
-      <option value="piper">Piper (open source, local)</option>
-      <option value="elevenlabs">ElevenLabs (optional key)</option>
-    </select></div>
-  <div class="foot"><span id="meta"></span><br>Explained by Gemma 4 (26B)<br>Grouped by EmbeddingGemma</div>
+  <div class="foot"><span id="meta"></span><br>Explained by Gemma 4 (26B)<br>Grouped by EmbeddingGemma<br>Voice by ElevenLabs</div>
 </aside>
 <main id="main"></main>
 
@@ -131,7 +125,7 @@ const store = { get(k, d) { try { return JSON.parse(localStorage.getItem(k)) ?? 
                 set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} } };
 
 let STORIES = [];
-const state = { countries: new Set(), camp: "all", topic: "All", lang: store.get("lang", "en"), voice: store.get("voice", "browser"),
+const state = { countries: new Set(), camp: "all", topic: "All", lang: store.get("lang", "en"), voice: "elevenlabs",
                 saved: new Set(store.get("saved", [])), view: "home", story: null, a: null, b: null, q: "" };
 
 function chips(el, items, isOn, onClick) {
@@ -147,7 +141,6 @@ function renderSidebar() {
   chips(fTopics, topics.map(t => [t, esc(t)]), t => state.topic === t, t => { state.topic = t; render(); });
   chips(fLang, LANGS, l => state.lang === l, l => { state.lang = l; store.set("lang", l); render(); });
   fCamp.querySelectorAll("button").forEach(b => { b.classList.toggle("on", b.dataset.v === state.camp); b.onclick = () => { state.camp = b.dataset.v; render(); }; });
-  fVoice.value = state.voice; fVoice.onchange = () => { state.voice = fVoice.value; store.set("voice", state.voice); };
   document.querySelectorAll("#nav a").forEach(a => a.classList.toggle("on", a.dataset.go === state.view || (state.view === "story" && a.dataset.go === "home")));
   nStories.textContent = STORIES.length; nSaved.textContent = (state.saved.size + store.get("articles", []).length) || "";
 }
@@ -249,22 +242,31 @@ function story() {
 }
 
 let audio;
-function stopSpeech() { speechSynthesis.cancel(); if (audio) audio.pause(); }
+let speakToken = 0;
+function stopSpeech() {
+  speakToken++;              // invalidate any in-flight generation
+  if (audio) { audio.pause(); audio.currentTime = 0; audio = null; }
+  if (window.speechSynthesis) speechSynthesis.cancel();  // belt-and-braces: silence any legacy utterance
+}
+// ElevenLabs only. No browser/Piper fallback, so a single play can never
+// produce two overlapping voices.
 async function speak(text, lang) {
   stopSpeech();
+  const mine = ++speakToken;               // this call's turn
   const note = document.getElementById("voiceNote");
-  if (state.voice !== "browser") {
-    try {
-      note.textContent = "Generating voice…";
-      const r = await fetch("/api/tts", { method:"POST", headers:{ "Content-Type":"application/json" }, body: JSON.stringify({ text, lang, engine: state.voice }) });
-      if (!r.ok) throw new Error((await r.json()).error || r.status);
-      audio = new Audio(URL.createObjectURL(await r.blob())); audio.play(); note.textContent = ""; return;
-    } catch (e) { note.textContent = `${state.voice} unavailable (${e.message}), using the built-in voice`; }
+  note.textContent = "Generating voice…";
+  try {
+    const r = await fetch("/api/tts", { method:"POST", headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ text, lang, engine: "elevenlabs" }) });
+    if (!r.ok) throw new Error((await r.json()).error || r.status);
+    const blob = await r.blob();
+    if (mine !== speakToken) return;        // a newer play started while we waited — drop this one
+    audio = new Audio(URL.createObjectURL(blob));
+    audio.play();
+    note.textContent = "";
+  } catch (e) {
+    if (mine === speakToken) note.textContent = `Voice unavailable: ${e.message}`;
   }
-  const u = new SpeechSynthesisUtterance(text); u.lang = SPEECH[lang]; u.rate = 1;
-  const v = speechSynthesis.getVoices().find(v => v.lang.replace("_", "-").startsWith(SPEECH[lang].slice(0, 2)));
-  if (v) u.voice = v;
-  speechSynthesis.speak(u);
 }
 
 function check() {
@@ -349,7 +351,6 @@ function render() {
 fetch("data/stories.json").then(r => r.json()).then(d => {
   STORIES = d.sort((a, b) => (b.divergence ?? 0) - (a.divergence ?? 0));
   meta.textContent = `${new Set(d.flatMap(s => s.headlines.map(h => h.outlet))).size} outlets compared`;
-  speechSynthesis.getVoices();
   let h = location.hash.slice(1);
   if (h.startsWith("save=")) {
     try {
