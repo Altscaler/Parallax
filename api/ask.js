@@ -3,12 +3,12 @@
 const URL = "https://generativelanguage.googleapis.com/v1beta/models/gemma-4-26b-a4b-it:generateContent";
 
 function prompt({ title, lang, question, length, compare, headlines, sides, common_ground }) {
-  const words = length === "short" ? 40 : 120;
+  const words = length === "short" ? 35 : 150;
   const lines = (headlines || []).map(h => `${h.country} | ${h.outlet} | ${h.title}${h.translation ? " (" + h.translation + ")" : ""}`).join("\n");
   const ending = compare ? ` End with one last sentence on how media from ${compare[0]} and from ${compare[1]} tell it differently.` : "";
   const task = (question
     ? `Answer this question from a reader in ${lang}, in at most ${words} words: "${question}"`
-    : `Write a spoken news briefing of about ${words} words in ${lang}, in the voice of a calm, neutral reporter: one sentence on what happened, then how each country's media tells it.`) + ending;
+    : `Write a spoken news briefing in ${lang}, ${length === "short" ? "2 sentences, about 35 words" : "a full paragraph of about 150 words, going into each country"}, in the voice of a calm, neutral reporter: one sentence on what happened, then how each country's media tells it.`) + ending;
   return `You explain how different countries' media cover one news story. You only know the headlines below.
 Never say who is right. Never call an outlet reliable or unreliable. If the headlines don't answer, say so. Plain text, no markdown.
 ${task}

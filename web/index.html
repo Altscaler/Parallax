@@ -151,7 +151,7 @@ function renderSidebar() {
 function visibleStories(list) {
   return list.filter(s => (state.topic === "All" || s.topic === state.topic)
     && [...state.countries].every(c => s.countries.includes(c))
-    && (!state.q || (s.title + " " + s.headlines.map(h => h.title + " " + (h.translation || "")).join(" ")).toLowerCase().includes(state.q.toLowerCase())));
+    && (state.hits ? state.hits.includes(s.id) : (!state.q || (s.title + " " + s.headlines.map(h => h.title + " " + (h.translation || "")).join(" ")).toLowerCase().includes(state.q.toLowerCase()))));
 }
 
 function whyLine(s) {
@@ -170,11 +170,26 @@ function cardHTML(s) {
 }
 
 function home(list, title, sub) {
-  const vis = visibleStories(list);
+  let vis = visibleStories(list);
+  if (state.hits) vis.sort((a, b) => state.hits.indexOf(a.id) - state.hits.indexOf(b.id));
   main.innerHTML = `<header class="top"><div><h1>${title}</h1><div class="sub">${sub}</div></div>
-    <input class="search" id="q" placeholder="Search a story" value="${esc(state.q)}"></header>
+    <input class="search" id="q" placeholder="Search a story, press Enter to ask Gemma" value="${esc(state.q)}"></header>
+    <div class="sub" id="qstat" style="margin:-8px 0 10px"></div>
     <div class="grid">${vis.map(cardHTML).join("") || `<div class="empty">No story matches these filters.</div>`}</div>`;
-  q.oninput = () => { state.q = q.value; const pos = q.selectionStart; render(); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(pos, pos); };
+  q.onkeydown = async e => {
+    if (e.key !== "Enter" || !q.value.trim()) return;
+    qstat.textContent = "Gemma is searching…";
+    try {
+      const r = await fetch("/api/search", { method:"POST", headers:{ "Content-Type":"application/json" },
+        body: JSON.stringify({ query: q.value, stories: STORIES.map(s => ({ id: s.id, topic: s.topic, title: s.title })) }) });
+      const d = await r.json();
+      if (!r.ok) throw new Error(d.error || r.status);
+      state.q = q.value; state.hits = d.ids; render();
+      document.getElementById("qstat").textContent = "Picked by Gemma 4";
+      const n = document.getElementById("q"); n.focus(); n.setSelectionRange(n.value.length, n.value.length);
+    } catch (err) { qstat.textContent = "Gemma search failed (" + err.message + "), showing text matches."; }
+  };
+  q.oninput = () => { state.q = q.value; state.hits = null; const pos = q.selectionStart; render(); const n = document.getElementById("q"); n.focus(); n.setSelectionRange(pos, pos); };
   main.querySelectorAll(".card").forEach(c => c.onclick = () => open(c.dataset.id));
 }
 
@@ -275,8 +290,8 @@ function story() {
   if (window.selB) selB.onchange = () => { if (selB.value === state.a) state.a = state.b; state.b = selB.value; render(); };
   saveBtn.onclick = () => { state.saved.has(s.id) ? state.saved.delete(s.id) : state.saved.add(s.id); store.set("saved", [...state.saved]); render(); };
   main.querySelectorAll("[data-len]").forEach(b => b.onclick = () => {
-    state.len = b.dataset.len; main.querySelectorAll("[data-len]").forEach(x => x.classList.toggle("on", x === b)); });
-  cmp.onchange = () => { state.cmp = cmp.checked; };
+    state.len = b.dataset.len; main.querySelectorAll("[data-len]").forEach(x => x.classList.toggle("on", x === b)); regen(s); });
+  cmp.onchange = () => { state.cmp = cmp.checked; regen(s); };
   main.querySelectorAll(".listen button[data-l]").forEach(b => b.onclick = () => liveBrief(s, b.dataset.l, b));
   main.querySelector("[data-stop]").onclick = stopSpeech;
 }
@@ -284,8 +299,15 @@ function story() {
 let audio;
 let speakToken = 0;
 const LNAME = { en:"English", fr:"French", es:"Spanish", zh:"Simplified Chinese", ar:"Arabic" };
+// Changing Short/Long or the compare tick rewrites the text already on screen.
+function regen(s) {
+  if (!state.liveLang) return;
+  liveBrief(s, state.liveLang, main.querySelector(`.listen button[data-l="${state.liveLang}"]`));
+}
+
 async function liveBrief(s, l, btn) {
   stopSpeech();
+  state.liveLang = l;
   state.lang = l; store.set("lang", l);
   main.querySelectorAll(".listen button[data-l]").forEach(x => x.classList.toggle("on", x === btn));
   const p = document.getElementById("live"), note = document.getElementById("voiceNote");

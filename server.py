@@ -48,6 +48,10 @@ class H(SimpleHTTPRequestHandler):
                 prompt = subprocess.run(["node", "-e", "process.stdout.write(require('./api/ask.js').prompt(JSON.parse(require('fs').readFileSync(0,'utf8'))))"],
                                         input=json.dumps(data).encode(), capture_output=True, check=True, cwd=ROOT).stdout.decode()
                 return self.reply(200, {"text": gemma.ask(prompt).strip()})
+            if self.path == "/api/search":  # same prompt as api/search.js (Vercel)
+                prompt = subprocess.run(["node", "-e", "process.stdout.write(require('./api/search.js').prompt(JSON.parse(require('fs').readFileSync(0,'utf8'))))"],
+                                        input=json.dumps(data).encode(), capture_output=True, check=True, cwd=ROOT).stdout.decode()
+                return self.reply(200, {"ids": gemma.ask_json(prompt)})
             if self.path == "/api/tts":
                 audio, ctype = tts(data["text"], data.get("lang", "en"), data.get("engine"))
                 return self.reply(200, audio, ctype)
