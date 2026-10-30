@@ -1,6 +1,8 @@
 const $ = id => document.getElementById(id);
 const LABEL = { confirmed: "Confirmed", contested: "Contested", single_source: "Single source", no_coverage: "No coverage found" };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const FLAG = { US: "🇺🇸", GB: "🇬🇧", FR: "🇫🇷", ES: "🇪🇸", CN: "🇨🇳", AE: "🇦🇪" };
+const flag = c => FLAG[(c.code || "").toUpperCase()] || "";
 const DEFAULT_DASH = "https://parallax-two-tawny.vercel.app";
 let cfg = {};
 
@@ -50,10 +52,10 @@ async function go(kind, lang) {
     } else if (kind === "world") {
       const r = await compareCountries(key, page, lang, status);
       $("out").innerHTML = `<div class="note"><b>${esc(r.story)}</b></div>` +
-        (r.countries || []).map(c => `<div class="claim"><b>${esc(c.country)}</b> <span class="why">${esc((c.outlets || []).join(", "))}</span><div>${esc(c.angle)}</div></div>`).join("") +
+        (r.countries || []).map(c => `<div class="claim"><b>${flag(c)} ${esc(c.country)}</b> <span class="why">${esc((c.outlets || []).join(", "))}</span><div>${esc(c.angle)}</div></div>`).join("") +
         `<p><b>This article:</b> ${esc(r.this_article)}</p><p><b>Biggest difference:</b> ${esc(r.difference)}</p>`;
       item = { type: "compare", lang, url: page.url, page_title: page.title, outlet: r.outlet, title: r.story,
-               summary: `${r.this_article} ${r.difference}`, key_points: (r.countries || []).map(c => `${c.country}: ${c.angle}`) };
+               summary: `${r.this_article} ${r.difference}`, key_points: (r.countries || []).map(c => `${flag(c)} ${c.country}: ${c.angle}`) };
     } else {
       const r = await analyze(key, page, lang, status);
       const acc = Math.max(0, Math.min(100, Number(r.accuracy) || 0));

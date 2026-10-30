@@ -127,7 +127,7 @@ ${page.text.slice(0, 600)}`);
 Never say who is right. Never call an outlet reliable or unreliable. If a country has no headlines, say "no coverage found".
 Reply with JSON only, all text in ${lang}:
 {"story":"the story in one short sentence",
- "countries":[{"country":"name","angle":"one sentence: what its media put first","outlets":["up to 3 outlet names"]}],
+ "countries":[{"code":"US, GB, FR, ES, CN or AE","country":"name","angle":"one sentence: what its media put first","outlets":["up to 3 outlet names"]}],
  "this_article":"one sentence: how this article's angle compares",
  "difference":"one sentence: the biggest difference between countries"}
 
