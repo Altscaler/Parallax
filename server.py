@@ -44,6 +44,10 @@ class H(SimpleHTTPRequestHandler):
         try:
             if self.path == "/api/check":
                 return self.reply(200, check(data.get("text", ""), data.get("lang", "English"), data.get("instagram") or None))
+            if self.path == "/api/ask":  # same prompt as api/ask.js (Vercel)
+                prompt = subprocess.run(["node", "-e", "process.stdout.write(require('./api/ask.js').prompt(JSON.parse(require('fs').readFileSync(0,'utf8'))))"],
+                                        input=json.dumps(data).encode(), capture_output=True, check=True, cwd=ROOT).stdout.decode()
+                return self.reply(200, {"text": gemma.ask(prompt).strip()})
             if self.path == "/api/tts":
                 audio, ctype = tts(data["text"], data.get("lang", "en"), data.get("engine"))
                 return self.reply(200, audio, ctype)

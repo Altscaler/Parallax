@@ -247,9 +247,14 @@ function story() {
 
     ${state.mode === "camp" ? campView(s) : `<div class="cols">${sideHTML(s, state.a)}${sideHTML(s, state.b)}</div>`}
 
-    <div class="box gemma"><h2>Gemma explains the whole story</h2>
-      <p class="${state.lang === "ar" ? "rtl" : ""}" lang="${state.lang}">${esc(brief)}</p>
-      <div class="listen">${LANGS.filter(([l]) => (s.briefing || {})[l]).map(([l, n]) => `<button data-l="${l}" class="${l === state.lang ? "on" : ""}">▶ ${n}</button>`).join("")}
+    <div class="box gemma"><h2>Gemma explains the whole story, live</h2>
+      <div class="listen" style="margin-bottom:14px">
+        <button data-len="short" class="${state.len === "short" ? "on" : ""}">Short</button>
+        <button data-len="long" class="${state.len !== "short" ? "on" : ""}">Long</button>
+        <label class="note" style="display:flex;align-items:center;gap:6px;cursor:pointer;color:#fff"><input type="checkbox" id="cmp" ${state.cmp ? "checked" : ""}> Compare both (${esc(CNAME[state.a] || state.a)} / ${esc(CNAME[state.b] || state.b)})</label>
+        <span class="note">Choose a language: Gemma 4 writes it now and reads it aloud.</span></div>
+      <p id="live" class="${state.lang === "ar" ? "rtl" : ""}" style="min-height:24px"></p>
+      <div class="listen">${LANGS.map(([l, n]) => `<button data-l="${l}">▶ ${n}</button>`).join("")}
         <button data-stop="1">■ Stop</button><span class="note" id="voiceNote"></span></div></div>
 
     <div class="box"><h2>Fact-check of the main claims</h2>
@@ -269,12 +274,41 @@ function story() {
   if (window.selA) selA.onchange = () => { if (selA.value === state.b) state.b = state.a; state.a = selA.value; render(); };
   if (window.selB) selB.onchange = () => { if (selB.value === state.a) state.a = state.b; state.b = selB.value; render(); };
   saveBtn.onclick = () => { state.saved.has(s.id) ? state.saved.delete(s.id) : state.saved.add(s.id); store.set("saved", [...state.saved]); render(); };
-  main.querySelectorAll(".listen button[data-l]").forEach(b => b.onclick = () => { state.lang = b.dataset.l; store.set("lang", state.lang); render(); speak(s.briefing[state.lang], state.lang); });
+  main.querySelectorAll("[data-len]").forEach(b => b.onclick = () => {
+    state.len = b.dataset.len; main.querySelectorAll("[data-len]").forEach(x => x.classList.toggle("on", x === b)); });
+  cmp.onchange = () => { state.cmp = cmp.checked; };
+  main.querySelectorAll(".listen button[data-l]").forEach(b => b.onclick = () => liveBrief(s, b.dataset.l, b));
   main.querySelector("[data-stop]").onclick = stopSpeech;
 }
 
 let audio;
 let speakToken = 0;
+const LNAME = { en:"English", fr:"French", es:"Spanish", zh:"Simplified Chinese", ar:"Arabic" };
+async function liveBrief(s, l, btn) {
+  stopSpeech();
+  state.lang = l; store.set("lang", l);
+  main.querySelectorAll(".listen button[data-l]").forEach(x => x.classList.toggle("on", x === btn));
+  const p = document.getElementById("live"), note = document.getElementById("voiceNote");
+  p.className = l === "ar" ? "rtl" : ""; p.lang = l;
+  p.textContent = "Gemma is writing…"; note.textContent = "";
+  let text;
+  try {
+    const r = await fetch("/api/ask", { method:"POST", headers:{ "Content-Type":"application/json" },
+      body: JSON.stringify({ title: s.title, lang: LNAME[l], length: state.len || "long", common_ground: s.common_ground,
+        compare: state.cmp ? [CNAME[state.a], CNAME[state.b]] : null,
+        sides: s.sides,
+        headlines: s.headlines.map(h => ({ country: h.country, outlet: h.outlet, title: h.title, translation: h.translation })) }) });
+    const d = await r.json();
+    if (!r.ok) throw new Error(d.error || r.status);
+    text = d.text; note.textContent = "Written live by Gemma 4";
+  } catch (e) {
+    text = (s.briefing || {})[l] || "";
+    note.textContent = "Live Gemma unavailable, showing the version prepared earlier";
+  }
+  p.textContent = text;
+  if (text) speak(text, l);
+}
+
 function stopSpeech() {
   speakToken++;              // invalidate any in-flight generation
   if (audio) { audio.pause(); audio.currentTime = 0; audio = null; }
