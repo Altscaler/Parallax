@@ -290,7 +290,13 @@ async function speak(text, lang) {
   try {
     const r = await fetch("/api/tts", { method:"POST", headers:{ "Content-Type":"application/json" },
       body: JSON.stringify({ text, lang, engine: "elevenlabs" }) });
-    if (!r.ok) throw new Error((await r.json()).error || r.status);
+    const ctype = r.headers.get("content-type") || "";
+    if (!r.ok || !ctype.startsWith("audio/")) {
+      // Not audio: either the backend isn't deployed (static host) or it errored.
+      let msg = ctype.includes("json") ? (await r.json()).error : `HTTP ${r.status}`;
+      if (!r.ok && !ctype.includes("json")) msg = "audio needs the live server (this static demo has no /api/tts)";
+      throw new Error(msg);
+    }
     const blob = await r.blob();
     if (mine !== speakToken) return;        // a newer play started while we waited — drop this one
     audio = new Audio(URL.createObjectURL(blob));

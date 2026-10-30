@@ -1,5 +1,10 @@
 {
-  "buildCommand": null,
-  "outputDirectory": "web",
-  "framework": null
+  "builds": [
+    { "src": "web/**", "use": "@vercel/static" },
+    { "src": "api/*.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/api/(.*)", "dest": "/api/$1" },
+    { "src": "/(.*)", "dest": "/web/$1" }
+  ]
 }
