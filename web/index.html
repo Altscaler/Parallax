@@ -415,7 +415,7 @@ function addFlag(p) {
 function articleHTML(a, i) {
   const date = new Date(a.saved_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
   const rtl = a.lang === "Arabic" ? ' style="direction:rtl;text-align:right"' : "";
-  const head = `<span class="tag">${a.type === "factcheck" ? "Fact-check" : a.type === "compare" ? "Compared across countries" : "Summary"} · ${esc(a.lang)} · ${esc(a.outlet || "")} · ${esc(date)}</span>
+  const head = `<span class="tag" style="padding-right:32px">${a.type === "factcheck" ? "Fact-check" : a.type === "compare" ? "Compared across countries" : "Summary"} · ${esc(a.lang)} · ${esc(a.outlet || "")} · ${esc(date)}</span>
     <h3><a href="${esc(a.url)}" target="_blank" rel="noopener" style="text-decoration:none">${esc(a.title || a.page_title)}</a></h3>`;
   const body = a.type === "factcheck"
     ? `<div class="meter">Accuracy estimate <div class="bar"><i style="width:${a.accuracy}%"></i></div> ${a.accuracy}/100</div>
@@ -427,8 +427,10 @@ function articleHTML(a, i) {
     : `<div${rtl}><p style="margin:0;font-size:14px;line-height:1.5">${esc(a.summary)}</p>
        <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">${(a.key_points || []).map(p => `<li>${esc(addFlag(p))}</li>`).join("")}</ul></div>`;
   const img = a.image ? `<img src="${esc(a.image)}" alt="" style="width:calc(100% + 36px);margin:-18px -18px 0;height:170px;object-fit:cover;border-radius:14px 14px 0 0" onerror="this.remove()">` : "";
-  return `<div class="card" style="cursor:default">${img}${head}${body}
-    <div><button class="save" data-del="${i}">Remove</button></div></div>`;
+  return `<div class="card" style="cursor:default;position:relative">${img}
+    <button data-del="${i}" title="Delete from Parallax" aria-label="Delete"
+      style="position:absolute;top:10px;right:10px;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:#fff;cursor:pointer;font-size:15px;line-height:1;z-index:1">×</button>
+    ${head}${body}</div>`;
 }
 
 function saved() {
