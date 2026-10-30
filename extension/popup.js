@@ -1,7 +1,7 @@
 const $ = id => document.getElementById(id);
 const LABEL = { confirmed: "Confirmed", contested: "Contested", single_source: "Single source", no_coverage: "No coverage found" };
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-const DEFAULT_DASH = "http://localhost:8000";
+const DEFAULT_DASH = "https://parallax-two-tawny.vercel.app";
 let cfg = {};
 
 chrome.storage.local.get(["key", "lang", "server", "dash"], v => {

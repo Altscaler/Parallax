@@ -67,19 +67,25 @@ TEXT:
     with ThreadPoolExecutor(6) as pool:
         jobs = [(pool.submit(corroborate, c["search"]), pool.submit(fact_checks, c["search"]), pool.submit(wire_coverage, c["search"])) for c in claims]
         found = [tuple(f.result() for f in j) for j in jobs]
-    evidence = [{"claim": c["claim"], "other_coverage": o, "fact_checks_published": f, "wire_agencies": w}
-                for c, (o, f, w) in zip(claims, found)]
+    evidence = [{"claim": c["claim"], "other_coverage": o, "fact_checks_published": [{"id": i, **x} for i, x in enumerate(f)],
+                 "wire_agencies": [{"id": i, **x} for i, x in enumerate(w)]} for c, (o, f, w) in zip(claims, found)]
     out = ask_json(f"""You compare claims with three kinds of evidence found on Google News: other outlets, published fact-checks
 (Reuters, AP, AFP, Snopes, PolitiFact, Full Fact, Maldita...) and wire agency coverage (Reuters, AP, AFP).
 Judge each claim ONLY from the evidence given. Cross several independent sources before saying "confirmed".
+Many fact-checks and wire items found are about other topics: ignore them unless they are about this exact claim.
 If a published fact-check addresses the claim, say what it concludes, naming the outlet, and use "contested" if it disputes the claim. Never say who is lying. Never call an outlet reliable or unreliable.
 Status: "confirmed" (several independent outlets or a wire agency), "contested" (outlets report something different),
 "single_source" (one origin only), "no_coverage" (nothing found, which proves nothing).
 Reply with JSON only, all text in {lang}:
-{{"summary":"2 sentences: what the text claims and how solid it looks","claims":[{{"claim":"...","status":"...","why":"one or two sentences naming the outlets and fact-checkers used"}}]}}
+{{"summary":"2 sentences: what the text claims and how solid it looks","claims":[{{"claim":"...","status":"...","fact_check_ids":[ids of fact_checks_published really about this claim, [] if none],"wire_ids":[ids of wire_agencies really about it],"why":"one or two sentences naming the outlets and fact-checkers used"}}]}}
 EVIDENCE:
 {json.dumps(evidence, ensure_ascii=False, indent=1)}""")
+    if isinstance(out, list):
+        out = {"summary": " ".join(o.get("summary", "") for o in out if isinstance(o, dict)),
+               "claims": [x for o in out if isinstance(o, dict) for x in (o.get("claims") or ([o] if "claim" in o else []))]}
     for c, e in zip(out.get("claims", []), evidence):
-        c["fact_checks"] = e["fact_checks_published"]; c["wires"] = e["wire_agencies"]
+        pick = lambda items, ids: [x for x in items if x["id"] in (ids or [])]
+        c["fact_checks"] = pick(e["fact_checks_published"], c.pop("fact_check_ids", []))
+        c["wires"] = pick(e["wire_agencies"], c.pop("wire_ids", []))
     out["source"] = source
     return out
