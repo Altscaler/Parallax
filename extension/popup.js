@@ -19,7 +19,8 @@ $("saveSettings").onclick = () => {
 
 function pageText() {
   const el = document.querySelector("article") || document.querySelector("main") || document.body;
-  return { url: location.href, title: document.title, text: el.innerText.replace(/\n{3,}/g, "\n\n").slice(0, 9000) };
+  const img = document.querySelector('meta[property="og:image"], meta[name="twitter:image"]');
+  return { url: location.href, title: document.title, image: img ? img.content : null, text: el.innerText.replace(/\n{3,}/g, "\n\n").slice(0, 9000) };
 }
 
 // Results are saved to the Parallax dashboard's "Saved" list by opening it in a background tab.
@@ -67,6 +68,7 @@ async function go(kind, lang) {
                story: r.story, summary: r.summary, accuracy: acc, accuracy_why: r.accuracy_why, claims: r.claims };
     }
     item.saved_at = new Date().toISOString();
+    item.image = page.image;
     const link = saveToParallax(item);
     $("out").insertAdjacentHTML("beforeend", `<div class="saved">✓ Saved to Parallax · <a href="${esc(link)}" target="_blank">open Saved</a></div>`);
     $("status").textContent = "";

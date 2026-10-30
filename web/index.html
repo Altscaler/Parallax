@@ -405,6 +405,13 @@ function method() {
     <p><b>Limits.</b> Headlines, not full articles. Some countries have few outlets in Google News. Gemma's model has its own blind spots. A claim with no coverage is not false, it is only unconfirmed.</p></div>`;
 }
 
+// Older saved comparisons have no flag in front of the country name.
+const NAMEFLAG = { "USA":"🇺🇸", "United States":"🇺🇸", "US":"🇺🇸", "UK":"🇬🇧", "United Kingdom":"🇬🇧", "France":"🇫🇷", "Spain":"🇪🇸", "China":"🇨🇳", "UAE":"🇦🇪", "United Arab Emirates":"🇦🇪" };
+function addFlag(p) {
+  const name = Object.keys(NAMEFLAG).find(n => p.startsWith(n + ":"));
+  return name ? `${NAMEFLAG[name]} ${p}` : p;
+}
+
 function articleHTML(a, i) {
   const date = new Date(a.saved_at).toLocaleString([], { dateStyle: "medium", timeStyle: "short" });
   const rtl = a.lang === "Arabic" ? ' style="direction:rtl;text-align:right"' : "";
@@ -418,8 +425,9 @@ function articleHTML(a, i) {
          <div><div class="c">${esc(c.claim)}</div><div class="w">${esc(c.why)}</div></div></div>`).join("")}
        <div class="w" style="margin-top:6px">${esc(a.outlet_note)}</div></details>`
     : `<div${rtl}><p style="margin:0;font-size:14px;line-height:1.5">${esc(a.summary)}</p>
-       <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">${(a.key_points || []).map(p => `<li>${esc(p)}</li>`).join("")}</ul></div>`;
-  return `<div class="card" style="cursor:default">${head}${body}
+       <ul style="margin:8px 0 0;padding-left:18px;font-size:13px">${(a.key_points || []).map(p => `<li>${esc(addFlag(p))}</li>`).join("")}</ul></div>`;
+  const img = a.image ? `<img src="${esc(a.image)}" alt="" style="width:calc(100% + 36px);margin:-18px -18px 0;height:170px;object-fit:cover;border-radius:14px 14px 0 0" onerror="this.remove()">` : "";
+  return `<div class="card" style="cursor:default">${img}${head}${body}
     <div><button class="save" data-del="${i}">Remove</button></div></div>`;
 }
 
